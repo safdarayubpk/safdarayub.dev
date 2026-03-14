@@ -17,7 +17,8 @@ export const flowCloudNativeTodo: Project = {
     "Kafka",
   ],
   links: {
-    github: "https://github.com/safdarayubpk/flow-cloud-native-todo",
+    github: "https://github.com/safdarayubpk/flow",
+    live: "https://frontend-blue-six-59.vercel.app/login",
   },
   isFlagship: false,
   priority: 3,

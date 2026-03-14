@@ -18,7 +18,7 @@ export const roboticsTextbook: Project = {
   ],
   links: {
     github: "https://github.com/safdarayubpk/robotics-textbook",
-    live: "https://robotics-textbook.vercel.app",
+    live: "https://2-book.vercel.app",
   },
   isFlagship: false,
   priority: 4,

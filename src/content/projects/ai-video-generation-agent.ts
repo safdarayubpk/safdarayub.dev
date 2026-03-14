@@ -15,7 +15,8 @@ export const aiVideoGenerationAgent: Project = {
     "Lucide React",
   ],
   links: {
-    github: "https://github.com/safdarayubpk/ai-video-generation-agent",
+    github: "https://github.com/safdarayubpk/general-agent-video-maker",
+    demo: "https://www.youtube.com/watch?v=7NoWCL33IUQ",
   },
   isFlagship: false,
   priority: 2,
