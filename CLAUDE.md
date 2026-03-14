@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio website for Safdar Ayub (safdarayub.dev) — an AI Engineer & Full Stack Developer. This is a statically generated portfolio with blog, project showcases, and contact form.
 
-**Current State:** Scaffolded + Git ready (Tasks 1.1–1.2 complete). Next.js 16 + React 19 + Tailwind 4 + TypeScript running. Repo: github.com/safdarayubpk/safdarayub.dev. Next: Task 1.3 (Deploy to Vercel).
+**Current State:** Phase 1 MVP complete (all 7 milestones, 42 tasks). Live at safdarayub-dev.vercel.app. Repo: github.com/safdarayubpk/safdarayub.dev. Next: Phase 2 (Blog + Polish).
 
 ## Raw Assets
 
