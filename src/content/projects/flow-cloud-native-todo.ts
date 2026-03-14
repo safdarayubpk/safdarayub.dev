@@ -1,0 +1,24 @@
+import { Project } from "@/types/project";
+
+export const flowCloudNativeTodo: Project = {
+  slug: "flow-cloud-native-todo",
+  title: "Flow — 8-Phase Cloud-Native Todo Application",
+  oneLiner:
+    "A todo app that evolved through 8 architectural phases — from console script to Kubernetes-deployed microservice with AI chatbot.",
+  category: "Full Stack",
+  techStack: [
+    "Next.js",
+    "FastAPI",
+    "SQLModel",
+    "Docker",
+    "Kubernetes",
+    "Helm",
+    "Dapr",
+    "Kafka",
+  ],
+  links: {
+    github: "https://github.com/safdarayubpk/flow-cloud-native-todo",
+  },
+  isFlagship: false,
+  priority: 3,
+};
