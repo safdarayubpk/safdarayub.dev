@@ -29,6 +29,38 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Safdar Ayub",
+              jobTitle: "AI Engineer & Full Stack Developer",
+              url: "https://safdarayub-dev.vercel.app",
+              sameAs: [
+                "https://github.com/safdarayubpk",
+                "https://linkedin.com/in/safdar-ayub-a9884694",
+                "https://youtube.com/@safdarayubpk",
+              ],
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Kohat District",
+                addressRegion: "Khyber Pakhtunkhwa",
+                addressCountry: "PK",
+              },
+              knowsAbout: [
+                "Artificial Intelligence",
+                "Agentic AI",
+                "Full Stack Development",
+                "Cloud-Native Development",
+                "MCP Servers",
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
         <ThemeProvider
           attribute="class"
