@@ -6,6 +6,7 @@ export const personalAiEmployee: Project = {
   oneLiner:
     "A 24/7 autonomous AI agent that monitors Gmail, WhatsApp, and filesystem — drafts responses on a cloud VM while you're offline, then executes with your approval when you reconnect.",
   category: "AI Agents",
+  image: "/images/projects/personal-ai-employee.png",
   techStack: [
     "Python",
     "FastMCP",

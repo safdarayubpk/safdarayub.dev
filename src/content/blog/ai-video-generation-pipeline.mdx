@@ -1,0 +1,124 @@
+---
+title: "Building AI Video Generation: From Text Prompt to 4-Minute Video"
+date: "2026-02-20"
+author: "Safdar Ayub"
+tags: ["Agentic AI", "Claude Code", "Project Breakdowns"]
+readTime: "9 min read"
+excerpt: "Inside the pipeline that takes a text prompt and produces a complete 4-minute motion graphics video with narration — fully AI-generated using Claude Code and Remotion."
+published: true
+---
+
+## The Challenge
+
+I wanted to create educational videos without being a video editor, motion designer, or narrator. The goal was simple: type a topic, get a complete video. Not a slideshow — a real motion graphics video with animations, code displays, transitions, and narration.
+
+The result is a pipeline that produces 4-minute videos from a single text prompt. Here's how it works.
+
+## The Architecture
+
+The pipeline has five stages:
+
+```
+Text Prompt → Script Generation → Visual Planning → Rendering → Export
+```
+
+### Stage 1: Script Generation (Claude Code)
+
+Claude Code takes the prompt and generates a structured script:
+- Introduction and hook
+- Main content sections with key points
+- Code examples (if technical topic)
+- Summary and takeaways
+- Narration text for each section
+
+The script isn't just text — it's structured data with timing cues, visual direction, and narration markers.
+
+### Stage 2: Visual Planning
+
+The script gets transformed into a Remotion composition plan:
+- Scene count and duration for each scene
+- Visual elements per scene (text overlays, code blocks, diagrams)
+- Transition types between scenes
+- Color schemes and typography choices
+
+### Stage 3: Asset Generation
+
+For each scene, the pipeline generates:
+- **Text overlays** with proper sizing and positioning
+- **Code blocks** with syntax highlighting (using the same styles as this blog)
+- **Background gradients** matching the topic's color scheme
+- **Narration audio** using Gemini Text-to-Speech API
+
+### Stage 4: Remotion Rendering
+
+Remotion is a React-based video rendering framework. Each scene is a React component with animation props:
+
+- Text elements animate in with spring physics
+- Code blocks appear line-by-line
+- Transitions use cross-fades and slide effects
+- Audio narration syncs with visual elements
+
+The composition renders at 1080p, 30fps, producing a polished motion graphics video.
+
+### Stage 5: Export
+
+The final video exports as MP4 with:
+- Embedded narration audio
+- Chapter markers in the description
+- Thumbnail generated from the first scene
+- YouTube-optimized metadata
+
+## Claude Code as Orchestrator
+
+The most interesting architectural decision was using Claude Code as the orchestrator rather than building a custom pipeline manager.
+
+Claude Code handles:
+- **Script generation** — Understanding the topic and structuring content
+- **Component generation** — Writing Remotion React components for each scene
+- **Error recovery** — When a render fails, analyzing the error and fixing the component
+- **Quality checks** — Reviewing the composition for timing, readability, and coherence
+
+This works because Claude Code can both generate code and reason about it. When a scene's text overflows its container, Claude Code doesn't just retry — it analyzes the layout, adjusts font sizes, and reflows the content.
+
+## Technical Challenges
+
+### Timing Synchronization
+
+The hardest problem was syncing narration audio with visual elements. Narration length varies based on content complexity, but visual animations have fixed durations.
+
+The solution: generate narration first, measure its duration, then adjust visual timing to match. Each scene's duration is set by its narration length plus a buffer for transitions.
+
+### Code Block Rendering
+
+Displaying code in video requires different considerations than web rendering:
+- Font size must be readable at 1080p on mobile screens
+- Syntax highlighting needs higher contrast than typical web themes
+- Line-by-line animation needs precise frame-level timing
+- Long lines must wrap or scroll without breaking readability
+
+### Memory Management
+
+Rendering a 4-minute video at 1080p requires processing ~7,200 frames. Remotion handles this with its server-side rendering approach, but component complexity still matters. Complex animations that look simple on screen can cause render times to balloon.
+
+The fix: keep components simple. Prefer CSS transforms over complex SVG animations. Use spring physics sparingly — one per scene, not one per element.
+
+## Results
+
+The pipeline produces videos like [Spec-Driven Development: Why You Should Document Before You Code](https://www.youtube.com/watch?v=7NoWCL33IUQ):
+
+- **4 minutes** of content from a single prompt
+- **Professional quality** motion graphics with consistent styling
+- **Narrated** with natural-sounding text-to-speech
+- **Code examples** rendered with syntax highlighting and line-by-line animation
+- **End-to-end generation** in approximately 10 minutes
+
+## What I Learned
+
+1. **AI orchestration beats custom pipelines.** Claude Code's ability to reason about errors and fix them saved dozens of hours compared to building error handling manually.
+2. **Audio drives timing, not video.** Generating narration first and fitting visuals to it produces much better results than the reverse.
+3. **Simplicity renders faster.** The scenes that look best are often the simplest — clean text, smooth transitions, minimal decoration.
+4. **React components are great for video.** Remotion's model of video-as-components makes iteration incredibly fast. Change a prop, re-render, review.
+
+## Try It
+
+The project is open source at [github.com/safdarayubpk/general-agent-video-maker](https://github.com/safdarayubpk/general-agent-video-maker). You'll need Claude Code access and a Gemini API key for text-to-speech.
