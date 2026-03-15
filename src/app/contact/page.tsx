@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ContactForm } from "@/components/contact/contact-form";
 import { ContactLinks } from "@/components/contact/contact-links";
 
@@ -15,6 +16,7 @@ export default function ContactPage() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         {/* Page hero */}
         <div className="mb-12">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
           <h1 className="text-4xl font-bold mb-3">Get in Touch</h1>
           <p className="text-muted-foreground text-lg">
             Have a project in mind, a job opportunity, or just want to connect?

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ProjectFilter } from "@/components/projects/project-filter";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { getProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function ProjectsPage() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         {/* Page hero */}
         <div className="mb-12">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Projects" }]} />
           <h1 className="text-4xl font-bold mb-3">Projects</h1>
           <p className="text-muted-foreground text-lg">
             Production AI agents, full-stack applications, and cloud-native

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { AnimateOnScroll } from "@/components/animations/animate-on-scroll";
 
 const timelineEntries = [
   {
@@ -43,38 +44,43 @@ export function Timeline() {
 
           <div className="space-y-8 md:space-y-12">
             {timelineEntries.map((entry, index) => (
-              <div
+              <AnimateOnScroll
                 key={entry.year}
-                className={`relative flex items-start gap-6 md:gap-0 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
+                variant={index % 2 === 0 ? "slide-left" : "slide-right"}
+                delay={index * 0.1}
               >
-                {/* Dot */}
-                <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary border-2 border-background -translate-x-1.5 mt-1.5 z-10" />
+                <div
+                  className={`relative flex items-start gap-6 md:gap-0 ${
+                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
+                >
+                  {/* Dot */}
+                  <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary border-2 border-background -translate-x-1.5 mt-1.5 z-10" />
 
-                {/* Spacer for mobile left offset */}
-                <div className="w-10 flex-shrink-0 md:hidden" />
+                  {/* Spacer for mobile left offset */}
+                  <div className="w-10 flex-shrink-0 md:hidden" />
 
-                {/* Content */}
-                <div className="flex-1 md:w-1/2 md:px-8">
-                  <div
-                    className={`bg-card border border-border/60 rounded-lg p-5 ${
-                      index % 2 === 0 ? "md:text-right" : "md:text-left"
-                    }`}
-                  >
-                    <span className="text-sm font-bold text-primary">
-                      {entry.year}
-                    </span>
-                    <h3 className="font-semibold mt-1">{entry.title}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {entry.description}
-                    </p>
+                  {/* Content */}
+                  <div className="flex-1 md:w-1/2 md:px-8">
+                    <div
+                      className={`bg-card border border-border/60 rounded-lg p-5 ${
+                        index % 2 === 0 ? "md:text-right" : "md:text-left"
+                      }`}
+                    >
+                      <span className="text-sm font-bold text-primary">
+                        {entry.year}
+                      </span>
+                      <h3 className="font-semibold mt-1">{entry.title}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {entry.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                {/* Empty half for desktop alternating */}
-                <div className="hidden md:block md:w-1/2" />
-              </div>
+                  {/* Empty half for desktop alternating */}
+                  <div className="hidden md:block md:w-1/2" />
+                </div>
+              </AnimateOnScroll>
             ))}
           </div>
         </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { Story } from "@/components/about/story";
 import { Values } from "@/components/about/values";
 import { SkillsDetailed } from "@/components/about/skills-detailed";
@@ -20,6 +21,7 @@ export default function AboutPage() {
       {/* Page hero */}
       <section className="py-16 md:py-24 bg-muted/50">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
           <h1 className="text-4xl font-bold mb-3">About Me</h1>
           <p className="text-muted-foreground text-lg">
             From Pakistan Air Force to AI Engineering
