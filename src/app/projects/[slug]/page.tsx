@@ -21,6 +21,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: project.title.split("—")[0].trim(),
     description: project.oneLiner,
+    openGraph: {
+      title: project.title.split("—")[0].trim(),
+      description: project.oneLiner,
+      type: "website",
+    },
   };
 }
 
