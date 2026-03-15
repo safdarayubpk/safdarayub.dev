@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Linkedin, Mail, Youtube } from "lucide-react";
+import { Github, Linkedin, Mail, Rss, Youtube } from "lucide-react";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -7,6 +7,7 @@ const quickLinks = [
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy Policy" },
 ];
 
 const socialLinks = [
@@ -68,9 +69,16 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-border/40 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Safdar Ayub. All rights reserved.
+        {/* RSS + Copyright */}
+        <div className="mt-8 pt-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+          <span>&copy; {new Date().getFullYear()} Safdar Ayub. All rights reserved.</span>
+          <a
+            href="/blog/rss.xml"
+            className="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
+          >
+            <Rss className="h-4 w-4" />
+            RSS Feed
+          </a>
         </div>
       </div>
     </footer>

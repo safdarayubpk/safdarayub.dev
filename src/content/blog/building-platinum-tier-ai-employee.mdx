@@ -1,0 +1,113 @@
+---
+title: "Building a Platinum-Tier AI Employee: From File Watcher to Hybrid Cloud Agent"
+date: "2026-03-10"
+author: "Safdar Ayub"
+tags: ["Agentic AI", "MCP Servers", "Project Breakdowns", "Hybrid Cloud"]
+readTime: "12 min read"
+excerpt: "How I evolved a simple file watcher into a production-grade autonomous AI agent with 4 MCP servers, 21 ADRs, and a hybrid cloud-local architecture."
+published: true
+---
+
+## The Problem
+
+Most AI agent tutorials stop at "call an API and return a response." But real-world autonomous agents need to handle failures, respect human oversight, operate across cloud and local environments, and maintain state across sessions. I wanted to build something that actually works in production — not just a demo.
+
+## The 4-Tier Evolution
+
+My Personal AI Employee started as a simple Bronze-tier file watcher and evolved through four distinct tiers, each adding production-critical capabilities:
+
+### Bronze: File Watcher
+
+The first version watched a directory for new files and processed them with Claude. Simple, but it proved the concept — an AI agent that monitors inputs and takes action without human prompting.
+
+### Silver: Multi-Channel Input
+
+Silver added Gmail and WhatsApp monitoring. The agent could now watch multiple input channels, prioritize messages, and draft responses. This is where I learned that channel management is harder than AI inference.
+
+### Gold: MCP Server Integration
+
+Gold introduced 4 custom MCP (Model Context Protocol) servers:
+
+- **fte-email** — Gmail API integration with OAuth2, draft management, and thread awareness
+- **fte-social** — WhatsApp Business API with message queuing and rate limiting
+- **fte-odoo** — ERP integration for business process automation
+- **fte-documents** — Document processing with OCR, classification, and filing
+
+Each server implements circuit breaker patterns for reliability and exponential backoff for rate limiting.
+
+### Platinum: Hybrid Cloud-Local Architecture
+
+The Platinum tier is where everything came together. The architecture splits across cloud and local:
+
+**Cloud VM (Oracle Cloud):** Runs the agent daemon, monitors all input channels, drafts responses, and stages actions. This runs 24/7 even when I'm offline.
+
+**Local Machine:** When I reconnect, git-sync pulls the latest state. I review staged actions, approve or reject them, and the agent executes approved actions through the MCP servers.
+
+This hybrid approach solves two critical problems:
+
+1. **Always-on monitoring** without running my local machine 24/7
+2. **Human-in-the-loop safety** for all consequential actions
+
+## Engineering Patterns That Matter
+
+### Circuit Breakers
+
+Every MCP server connection uses a circuit breaker with three states: closed (normal), open (failing, stop trying), and half-open (test one request). This prevents cascade failures when a service goes down.
+
+### Correlation IDs
+
+Every action chain gets a unique correlation ID that flows through logs, drafts, and approvals. When I'm reviewing 20 staged actions, I can trace each one back to its trigger.
+
+### Human-in-the-Loop (HITL) Safety Levels
+
+Actions are classified into three safety levels:
+
+- **Routine** — Auto-executed (filing documents, tagging emails)
+- **Sensitive** — Staged for review (sending emails, updating records)
+- **Critical** — Requires explicit approval with confirmation (financial actions, deletions)
+
+### PM2 Daemon Management
+
+The cloud agent runs under PM2 with automatic restart, log rotation, and health monitoring. If the agent crashes, PM2 brings it back up within seconds.
+
+## What 21 ADRs Taught Me
+
+I wrote 21 Architecture Decision Records (ADRs) for this project. Each one documents:
+
+- **Context** — What problem we're solving
+- **Decision** — What we chose and why
+- **Consequences** — What trade-offs we accepted
+
+The most valuable lesson: ADRs force you to think before you build. Every time I was tempted to "just code it," writing the ADR first revealed edge cases I hadn't considered.
+
+Key ADRs that shaped the architecture:
+
+- **ADR-003: Hybrid Cloud-Local Split** — Why we can't just run everything locally or everything in the cloud
+- **ADR-007: Circuit Breaker Implementation** — Why we chose the half-open state pattern over simple retry
+- **ADR-012: HITL Safety Levels** — How we classify actions and why three levels is the right granularity
+- **ADR-019: Git-Sync State Transfer** — Why git is the right protocol for cloud-to-local state transfer
+
+## The Verified Live Demo
+
+The hackathon judges didn't just review code — they watched the system work:
+
+1. Sent a test email to the monitored Gmail account
+2. Watched the cloud VM detect and process it within 30 seconds
+3. Triggered git-sync on local machine
+4. Reviewed the staged draft response
+5. Approved the action
+6. Confirmed the response was sent via the MCP email server
+
+This end-to-end demonstration earned the Platinum tier — the highest achievable rating.
+
+## Key Takeaways
+
+- **Start simple, evolve deliberately.** Each tier solved real problems from the previous tier.
+- **Production AI needs safety rails.** HITL gates aren't optional — they're essential.
+- **Hybrid architectures solve real constraints.** Cloud for availability, local for control.
+- **Document decisions, not just code.** ADRs are the most underrated engineering practice.
+- **Circuit breakers save production systems.** External services fail. Plan for it.
+
+## Related Projects
+
+Check out the full project details at [Personal AI Employee](/projects/personal-ai-employee) or explore the [source code on GitHub](https://github.com/safdarayubpk/personal-ai-employee).

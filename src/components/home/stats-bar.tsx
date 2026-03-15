@@ -1,3 +1,5 @@
+import { CountUp } from "@/components/animations/count-up";
+
 const stats = [
   { value: "23+", label: "Years of Service" },
   { value: "148+", label: "GitHub Repositories" },
@@ -17,7 +19,7 @@ export function StatsBar() {
               className="text-center last:col-span-2 md:last:col-span-1"
             >
               <div className="text-2xl md:text-3xl font-bold text-primary">
-                {stat.value}
+                <CountUp value={stat.value} />
               </div>
               <div className="text-sm text-muted-foreground mt-1">
                 {stat.label}
