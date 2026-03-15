@@ -6,6 +6,7 @@ export const aiVideoGenerationAgent: Project = {
   oneLiner:
     "Type a prompt, get a full 4-minute motion graphics video with narration — completely AI-generated.",
   category: "AI Agents",
+  image: "/images/projects/ai-video-generation-agent.png",
   techStack: [
     "TypeScript",
     "React",

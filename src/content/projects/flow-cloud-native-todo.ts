@@ -6,6 +6,7 @@ export const flowCloudNativeTodo: Project = {
   oneLiner:
     "A todo app that evolved through 8 architectural phases — from console script to Kubernetes-deployed microservice with AI chatbot.",
   category: "Full Stack",
+  image: "/images/projects/flow-cloud-native-todo.png",
   techStack: [
     "Next.js",
     "FastAPI",

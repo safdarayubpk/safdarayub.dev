@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   oneLiner: string;
   category: string;
+  image: string;
   techStack: string[];
   links: {
     github?: string;

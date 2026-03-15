@@ -7,6 +7,7 @@ export const roboticsTextbook: Project = {
   oneLiner:
     "A 6-chapter interactive textbook on robotics with a built-in AI chatbot that answers questions from the content.",
   category: "Education",
+  image: "/images/projects/robotics-textbook.png",
   techStack: [
     "Docusaurus",
     "React",

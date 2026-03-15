@@ -1,0 +1,151 @@
+---
+title: "4 Custom MCP Servers: Email, Social Media, ERP, and Documents"
+date: "2026-02-14"
+author: "Safdar Ayub"
+tags: ["MCP Servers", "Agentic AI", "Tutorials"]
+readTime: "11 min read"
+excerpt: "A deep dive into designing and building 4 production MCP servers — Gmail integration, WhatsApp Business, Odoo ERP, and document processing — with circuit breakers and HITL safety."
+published: true
+---
+
+## What Are MCP Servers?
+
+Model Context Protocol (MCP) servers are a standardized way for AI agents to interact with external systems. Think of them as adapters — they translate between what an AI model wants to do ("send an email") and what an API requires (OAuth2 tokens, MIME formatting, SMTP delivery).
+
+For my Personal AI Employee, I built 4 custom MCP servers. Each one connects the autonomous agent to a real-world system with production-grade reliability patterns.
+
+## Server 1: fte-email (Gmail)
+
+### What It Does
+- Monitors a Gmail inbox for new messages
+- Reads email threads with full conversation context
+- Drafts responses with proper threading (In-Reply-To, References headers)
+- Sends approved drafts
+- Labels and archives processed messages
+
+### Key Design Decisions
+
+**OAuth2 with Refresh Tokens:** Gmail's API requires OAuth2. I store the refresh token securely and handle token expiration automatically. When the access token expires, the MCP server refreshes it without interrupting the agent.
+
+**Thread Awareness:** Replying to an email isn't just sending text — it's continuing a conversation. The server tracks thread IDs, message IDs, and reference chains. This ensures replies appear as part of the original conversation in the recipient's inbox, not as disconnected messages.
+
+**Draft-First Pattern:** The server never sends directly. Every outgoing email is first created as a Gmail draft. The agent stages the draft, the HITL gate reviews it, and only after approval does the server send. This prevents accidental emails from agent hallucinations.
+
+### Circuit Breaker Implementation
+
+Gmail's API has rate limits (250 quota units per user per second). The circuit breaker tracks:
+- Failed requests in a sliding window
+- Opens the circuit after 3 consecutive failures
+- Half-opens after 30 seconds to test one request
+- Fully closes on successful half-open test
+
+This prevents the agent from hammering Gmail during outages and consuming quota on failed requests.
+
+## Server 2: fte-social (WhatsApp Business)
+
+### What It Does
+- Receives incoming WhatsApp messages via webhook
+- Reads message history with contact context
+- Drafts responses with rich formatting (bold, italic, lists)
+- Sends approved messages
+- Handles media attachments (images, documents)
+
+### Key Design Decisions
+
+**Webhook Receiver:** WhatsApp Business API pushes messages to a webhook endpoint. The MCP server runs a lightweight HTTP listener that receives webhooks, validates signatures, and queues messages for agent processing.
+
+**Message Queue:** Instead of processing messages immediately, they go into an in-memory queue. The agent pulls from the queue on its own schedule. This decouples message reception from processing and prevents message loss during agent restarts.
+
+**Rate Limiting:** WhatsApp Business has strict rate limits — especially for new conversations. The server tracks per-contact rate windows and delays sends to stay within limits. If a rate limit is hit, the message is re-queued with exponential backoff.
+
+### HITL Safety Level: Sensitive
+
+All outgoing WhatsApp messages are classified as "sensitive" in the HITL system. The agent drafts responses, but they're always staged for human review before sending. Social media messages are public-facing — a bad email can be corrected, but a bad WhatsApp message is immediately visible.
+
+## Server 3: fte-odoo (ERP)
+
+### What It Does
+- Reads business records (contacts, invoices, products)
+- Creates and updates records
+- Runs predefined business workflows
+- Generates reports and summaries
+
+### Key Design Decisions
+
+**XML-RPC Interface:** Odoo's API uses XML-RPC, which is unusual for modern APIs but reliable. The MCP server wraps XML-RPC calls in a clean async interface that the agent can call naturally.
+
+**Record Validation:** Before creating or updating records, the server validates data against Odoo's field definitions. This catches type mismatches, required field violations, and relationship integrity issues before they reach the ERP.
+
+**Read-Heavy, Write-Careful:** The agent can freely read Odoo data (contacts, inventory, invoices). But write operations (creating invoices, updating records) go through the HITL gate at the "critical" safety level. ERP data affects financial records — there's no room for agent mistakes.
+
+### Circuit Breaker: Longer Windows
+
+ERP systems are less tolerant of rapid retries than cloud APIs. The fte-odoo circuit breaker uses longer windows:
+- 5 consecutive failures to open
+- 2-minute half-open delay
+- Full close requires 3 consecutive successes
+
+## Server 4: fte-documents (Document Processing)
+
+### What It Does
+- Monitors a filesystem directory for new documents
+- Classifies documents by type (invoice, contract, correspondence)
+- Extracts key data (dates, amounts, parties)
+- Files documents in an organized directory structure
+- Generates summaries for the agent's context
+
+### Key Design Decisions
+
+**File Watcher Pattern:** The server uses filesystem events (inotify on Linux) to detect new files. When a file appears in the watched directory, it's queued for processing. This is more efficient than polling and catches files immediately.
+
+**Classification Pipeline:** Document classification runs in three steps:
+1. File type detection (PDF, image, text)
+2. Content extraction (OCR for images, text extraction for PDFs)
+3. Category classification (based on extracted content patterns)
+
+**Organized Filing:** After classification, documents are moved to a structured directory:
+```
+documents/
+├── invoices/
+│   └── 2026-03/
+├── contracts/
+├── correspondence/
+└── unclassified/
+```
+
+### HITL Safety Level: Routine
+
+Document filing is classified as "routine" — the agent processes and files documents automatically. If a document is misclassified, the fix is simple (move to correct directory). The low risk and high volume make this ideal for full automation.
+
+## Cross-Cutting Patterns
+
+### Correlation IDs
+
+Every action across all 4 servers gets a correlation ID. When the agent reads an email, drafts a response, and stages it for review — all three actions share one correlation ID. This enables:
+- End-to-end tracing in logs
+- Grouped display in the approval interface
+- Audit trails for compliance
+
+### Health Checks
+
+Each server exposes a health endpoint that reports:
+- Connection status to the external service
+- Circuit breaker state
+- Queue depth (for servers with queues)
+- Last successful operation timestamp
+
+The agent checks health before attempting operations. If a server is unhealthy, the agent can delay non-urgent tasks or notify the user about the outage.
+
+### Configuration via Environment Variables
+
+All secrets (API keys, OAuth tokens, database URLs) are loaded from environment variables. No credentials in code, no credentials in git. The cloud VM uses PM2's ecosystem file for environment management.
+
+## Lessons Learned
+
+1. **Draft-first prevents disasters.** Never let an agent send directly. Always stage, review, then execute.
+2. **Circuit breakers are essential, not optional.** External services fail. Your agent should degrade gracefully, not crash.
+3. **Classify HITL levels by risk, not by frequency.** Some actions happen often but are low-risk (filing). Some happen rarely but are high-risk (financial operations). Safety levels should reflect risk.
+4. **Correlation IDs save debugging hours.** When you're tracing why an email response was wrong, following one ID through four servers is infinitely better than grepping timestamps.
+5. **Start with read-only.** Build each server's read operations first. Get comfortable with the API. Then add write operations with appropriate safety gates.
+
+These 4 MCP servers power the Personal AI Employee's interaction with the real world. They're not just API wrappers — they're production-grade adapters with safety, reliability, and observability built in.

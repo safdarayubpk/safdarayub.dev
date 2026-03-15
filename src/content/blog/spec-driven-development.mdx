@@ -1,0 +1,123 @@
+---
+title: "Spec-Driven Development: Why I Write 21 ADRs Before Shipping"
+date: "2026-02-28"
+author: "Safdar Ayub"
+tags: ["Spec-Driven Development", "Tutorials"]
+readTime: "10 min read"
+excerpt: "How a four-phase workflow of Spec, Design, Generate, and Review replaced ad-hoc coding — and why military planning taught me to document decisions before writing code."
+published: true
+---
+
+## The Problem With "Just Start Coding"
+
+Most developers dive straight into code. The idea is fresh, the energy is high, and writing a spec feels like bureaucracy. I used to think the same way — until I watched projects collapse under their own complexity.
+
+The turning point came from my military background. In the Pakistan Air Force, no operation starts without a plan. Every mission has documented objectives, risk assessments, and contingency procedures. Not because the military loves paperwork — because the cost of failure is too high for improvisation.
+
+Software is the same. The cost of building the wrong thing, or building the right thing the wrong way, far exceeds the cost of planning.
+
+## The Four-Phase Workflow
+
+My development process follows four phases:
+
+### Phase 1: Spec
+
+Before touching a code editor, I write a specification. This isn't a vague requirements doc — it's a precise description of what will be built, why, and what constraints apply.
+
+For the Personal AI Employee project, the spec covered:
+- System architecture (cloud VM + local machine + git-sync)
+- Input channels (Gmail, WhatsApp, filesystem)
+- Safety levels (routine, sensitive, critical)
+- Failure modes and recovery procedures
+- Performance requirements (response time, uptime)
+
+### Phase 2: Design
+
+With the spec locked, I design the technical architecture. This is where Architecture Decision Records (ADRs) come in.
+
+Each ADR follows a simple template:
+
+- **Title**: A short, descriptive name
+- **Status**: Proposed, Accepted, Deprecated, Superseded
+- **Context**: What problem are we solving?
+- **Decision**: What did we choose?
+- **Consequences**: What are the trade-offs?
+
+For the Personal AI Employee, I wrote 21 ADRs. Some examples:
+
+**ADR-003: Hybrid Cloud-Local Split**
+- Context: Agent needs 24/7 monitoring, but user needs approval control
+- Decision: Cloud VM for monitoring + drafting, local machine for approval + execution
+- Consequences: Added complexity of git-sync state transfer, but gained offline tolerance and HITL safety
+
+**ADR-012: HITL Safety Levels**
+- Context: Some actions are safe to auto-execute, others need human review
+- Decision: Three levels — routine (auto), sensitive (staged), critical (explicit approval)
+- Consequences: More classification work per action, but prevents unauthorized operations
+
+### Phase 3: Generate
+
+With specs and ADRs complete, code generation becomes systematic. Each component has clear inputs, outputs, and constraints. I use Claude Code extensively at this phase — the specs provide enough context for accurate code generation.
+
+The key insight: AI code generation works dramatically better with specs. Without a spec, you're prompting with vague descriptions and getting vague code. With a spec, you're providing exact requirements and getting exact implementations.
+
+### Phase 4: Review
+
+Every generated component gets reviewed against the spec. Does it satisfy the requirements? Does it respect the ADR decisions? Does it handle the failure modes?
+
+This phase catches the gap between "what was specified" and "what was built." It's the quality control inspection of software — and yes, that's directly from my Air Force experience.
+
+## Why 21 ADRs?
+
+People ask why I wrote 21 ADRs for a single project. The answer: because there were 21 significant decisions.
+
+Not every decision needs an ADR. You don't need one for "use TypeScript" if that's the obvious choice. But when a decision involves trade-offs — when reasonable engineers could disagree — that's when you document it.
+
+Here's what 21 ADRs gave me:
+
+### Clarity Under Complexity
+When the system had 4 MCP servers, cloud-local synchronization, and multiple safety levels, the ADRs were my map. Any question about "why does it work this way?" had a documented answer.
+
+### Onboarding Speed
+If someone joins the project, they don't need to reverse-engineer decisions from code. They read the ADRs and understand the architecture in an hour.
+
+### Change Management
+When I needed to modify the circuit breaker implementation, I could trace back to ADR-007, understand the original reasoning, and evaluate whether the change was still consistent with the design goals.
+
+### Accountability
+Each ADR records not just what was decided, but what was considered and rejected. This prevents revisiting the same debates and ensures decisions are made with full context.
+
+## Military Planning Parallels
+
+The connection between military operations planning and spec-driven development is direct:
+
+| Military | Software |
+|---|---|
+| Mission briefing | Specification document |
+| Operations order | Architecture design |
+| Risk assessment | ADR consequences |
+| Contingency plans | Error handling / fallbacks |
+| After-action review | Code review / retrospective |
+
+Both follow the same principle: the time to discover problems is before execution, not during it.
+
+## How to Start
+
+If you're new to spec-driven development:
+
+1. **Start small.** Write a one-page spec for your next feature. Just describe what it does, why, and what it shouldn't do.
+2. **Write your first ADR.** Pick a decision you recently debated. Document the context, what you chose, and why.
+3. **Use the spec for code generation.** Give your spec to Claude Code or another AI tool. Compare the output quality with and without a spec.
+4. **Review against the spec.** After building, check: does the implementation match what was specified?
+
+You'll find that 30 minutes of planning saves hours of debugging and rewriting.
+
+## Key Takeaways
+
+- Specs prevent building the wrong thing. ADRs prevent building it the wrong way.
+- AI code generation is dramatically better with specifications.
+- Document decisions when reasonable engineers could disagree.
+- Military planning and software planning are the same discipline applied to different domains.
+- The cost of planning is always less than the cost of rework.
+
+The 21 ADRs in my Personal AI Employee project aren't overhead — they're the foundation that made a Platinum-tier system possible.
