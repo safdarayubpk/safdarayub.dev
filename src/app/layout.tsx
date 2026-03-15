@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
@@ -10,6 +10,18 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://safdarayub-dev.vercel.app";
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B1120" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: {
     default: "Safdar Ayub — AI Engineer & Full Stack Developer",
@@ -17,9 +29,32 @@ export const metadata: Metadata = {
   },
   description:
     "Portfolio of Safdar Ayub — AI Engineer & Full Stack Developer building intelligent systems with Next.js, Python, and cloud-native technologies.",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://safdarayub-dev.vercel.app"
-  ),
+  metadataBase: new URL(siteUrl),
+  authors: [{ name: "Safdar Ayub", url: siteUrl }],
+  keywords: [
+    "AI Engineer",
+    "Full Stack Developer",
+    "Next.js",
+    "Python",
+    "Agentic AI",
+    "Cloud-Native",
+    "Portfolio",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Safdar Ayub",
+    title: "Safdar Ayub — AI Engineer & Full Stack Developer",
+    description:
+      "Portfolio of Safdar Ayub — AI Engineer & Full Stack Developer building intelligent systems with Next.js, Python, and cloud-native technologies.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Safdar Ayub — AI Engineer & Full Stack Developer",
+    description:
+      "Portfolio of Safdar Ayub — AI Engineer & Full Stack Developer building intelligent systems with Next.js, Python, and cloud-native technologies.",
+  },
 };
 
 export default function RootLayout({
@@ -62,6 +97,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -69,7 +107,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <div className="flex-1">{children}</div>
+          <main id="main-content" className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
