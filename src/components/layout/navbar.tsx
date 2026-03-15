@@ -21,7 +21,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
-      <nav className="max-w-6xl mx-auto px-4 md:px-6 flex h-16 items-center justify-between">
+      <nav aria-label="Main navigation" className="max-w-6xl mx-auto px-4 md:px-6 flex h-16 items-center justify-between">
         {/* Logo / Name */}
         <Link href="/" className="text-lg font-bold tracking-tight">
           Safdar<span className="text-primary">.</span>
@@ -33,6 +33,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
+              aria-current={pathname === link.href ? "page" : undefined}
               className={cn(
                 "px-3 py-2 text-sm font-medium rounded-md transition-colors hover:text-primary",
                 pathname === link.href

@@ -39,12 +39,13 @@ export function MobileNav() {
             Safdar<span className="text-primary">.</span>
           </SheetTitle>
         </SheetHeader>
-        <nav className="flex flex-col gap-1 mt-6">
+        <nav aria-label="Mobile navigation" className="flex flex-col gap-1 mt-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
+              aria-current={pathname === link.href ? "page" : undefined}
               className={cn(
                 "px-3 py-3 text-base font-medium rounded-md transition-colors hover:bg-accent",
                 pathname === link.href
