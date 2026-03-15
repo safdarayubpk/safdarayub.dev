@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,9 +27,15 @@ export function FeaturedProjects() {
                 project.isFlagship ? "border-primary/50 ring-1 ring-primary/20" : ""
               }`}
             >
-              {/* Image placeholder */}
-              <div className="aspect-video bg-muted border-b border-border/40 flex items-center justify-center text-muted-foreground text-sm">
-                Screenshot
+              {/* Project screenshot */}
+              <div className="aspect-video relative bg-muted border-b border-border/40 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={`${project.title.split("—")[0].trim()} screenshot`}
+                  fill
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
               </div>
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2 mb-1">
