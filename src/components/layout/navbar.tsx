@@ -35,7 +35,7 @@ export function Navbar() {
               href={link.href}
               aria-current={pathname === link.href ? "page" : undefined}
               className={cn(
-                "px-3 py-2 text-sm font-medium rounded-md transition-colors hover:text-primary",
+                "px-3 py-2.5 text-sm font-medium rounded-md transition-colors hover:text-primary min-h-[44px] flex items-center",
                 pathname === link.href
                   ? "text-primary"
                   : "text-muted-foreground"

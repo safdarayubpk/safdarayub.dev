@@ -40,7 +40,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors py-1"
                   >
                     {link.label}
                   </Link>
@@ -59,7 +59,7 @@ export function Footer() {
                   href={link.href}
                   target={link.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors p-2 -m-2"
                   aria-label={link.label}
                 >
                   <link.icon className="h-5 w-5" />

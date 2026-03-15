@@ -34,7 +34,7 @@ export function Hero() {
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2">
               Safdar Ayub
             </h1>
-            <h2 className="text-xl md:text-2xl text-primary font-semibold mb-4">
+            <h2 className="text-xl md:text-2xl text-blue-400 dark:text-blue-300 font-semibold mb-4">
               AI Engineer &amp; Full Stack Developer
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-xl">
@@ -70,7 +70,7 @@ export function Hero() {
                   href={link.href}
                   target={link.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors p-2 -m-2"
                   aria-label={link.label}
                 >
                   <link.icon className="h-5 w-5" />
