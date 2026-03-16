@@ -1,8 +1,8 @@
 import { getBlogPosts } from "@/lib/blog";
+import { siteConfig } from "@/config/site";
 
 export async function GET() {
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://safdarayub-dev.vercel.app";
+  const siteUrl = siteConfig.url;
   const posts = getBlogPosts();
 
   const itemsXml = posts

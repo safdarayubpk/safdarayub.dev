@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, Copy, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 
 interface ShareButtonsProps {
   title: string;
@@ -14,7 +15,7 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
   const siteUrl =
     typeof window !== "undefined"
       ? window.location.origin
-      : "https://safdarayub-dev.vercel.app";
+      : siteConfig.url;
   const url = `${siteUrl}/blog/${slug}`;
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);

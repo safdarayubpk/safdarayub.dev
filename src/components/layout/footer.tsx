@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Github, Linkedin, Mail, Rss, Youtube } from "lucide-react";
+import { socialLinks as links, contactInfo } from "@/config/site";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -10,11 +11,11 @@ const quickLinks = [
   { href: "/privacy", label: "Privacy Policy" },
 ];
 
-const socialLinks = [
-  { href: "https://github.com/safdarayubpk", label: "GitHub", icon: Github },
-  { href: "https://linkedin.com/in/safdarayubpk", label: "LinkedIn", icon: Linkedin },
-  { href: "https://youtube.com/@safdarayub3584", label: "YouTube", icon: Youtube },
-  { href: "mailto:safdarayub@gmail.com", label: "Email", icon: Mail },
+const footerSocialLinks = [
+  { href: links.github, label: "GitHub", icon: Github },
+  { href: links.linkedin, label: "LinkedIn", icon: Linkedin },
+  { href: links.youtube, label: "YouTube", icon: Youtube },
+  { href: links.email, label: "Email", icon: Mail },
 ];
 
 export function Footer() {
@@ -53,7 +54,7 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold mb-3">Connect</h3>
             <div className="flex gap-3 mb-4">
-              {socialLinks.map((link) => (
+              {footerSocialLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -67,10 +68,10 @@ export function Footer() {
               ))}
             </div>
             <p className="text-sm text-muted-foreground">
-              safdarayub@gmail.com
+              {contactInfo.email}
             </p>
             <p className="text-sm text-muted-foreground mt-1">
-              Kohat District, Pakistan
+              {contactInfo.location}
             </p>
           </div>
         </div>

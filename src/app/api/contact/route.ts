@@ -3,10 +3,19 @@ import { contactSchema } from "@/lib/contact-schema";
 import { sendContactEmail } from "@/lib/send-email";
 
 // In-memory rate limiting (3 requests per IP per hour)
+// Note: In-memory rate limit resets on cold start. Acceptable for portfolio contact form volume.
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
+
+  // Periodically clean up expired entries to prevent unbounded Map growth
+  if (rateLimit.size > 100) {
+    for (const [key, entry] of rateLimit) {
+      if (now > entry.resetAt) rateLimit.delete(key);
+    }
+  }
+
   const entry = rateLimit.get(ip);
 
   if (!entry || now > entry.resetAt) {

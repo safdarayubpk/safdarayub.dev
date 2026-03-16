@@ -65,8 +65,14 @@ export function ContactForm() {
       });
 
       if (!res.ok) {
-        const body = await res.json();
-        throw new Error(body.error || "Something went wrong");
+        let message = "Something went wrong";
+        try {
+          const body = await res.json();
+          message = body.error || message;
+        } catch {
+          // Response wasn't JSON (e.g., 502 proxy error)
+        }
+        throw new Error(message);
       }
 
       setStatus("success");
@@ -113,6 +119,7 @@ export function ContactForm() {
         <Input
           id="name"
           placeholder="Your name"
+          autoComplete="name"
           {...register("name")}
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? "name-error" : undefined}
@@ -131,6 +138,7 @@ export function ContactForm() {
           id="email"
           type="email"
           placeholder="you@example.com"
+          autoComplete="email"
           {...register("email")}
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? "email-error" : undefined}

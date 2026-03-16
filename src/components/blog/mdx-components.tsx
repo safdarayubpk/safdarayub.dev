@@ -55,7 +55,7 @@ function TechBadge({ name }: { name: string }) {
   );
 }
 
-export function getMDXComponents(): Record<string, React.ComponentType<React.ComponentProps<never>> | ((props: React.HTMLAttributes<HTMLElement>) => React.ReactNode)> {
+export function getMDXComponents() {
   return {
     ProjectLink,
     Callout,

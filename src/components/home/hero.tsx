@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { FileDown, ArrowRight, Mail, Github, Linkedin, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { socialLinks as links } from "@/config/site";
 
-const socialLinks = [
-  { href: "https://github.com/safdarayubpk", label: "GitHub", icon: Github },
-  { href: "https://linkedin.com/in/safdar-ayub-a9884694", label: "LinkedIn", icon: Linkedin },
-  { href: "mailto:safdarayub@gmail.com", label: "Email", icon: Mail },
-  { href: "https://youtube.com/@safdarayub3584", label: "YouTube", icon: Youtube },
+const heroSocialLinks = [
+  { href: links.github, label: "GitHub", icon: Github },
+  { href: links.linkedin, label: "LinkedIn", icon: Linkedin },
+  { href: links.email, label: "Email", icon: Mail },
+  { href: links.youtube, label: "YouTube", icon: Youtube },
 ];
 
 export function Hero() {
@@ -64,7 +65,7 @@ export function Hero() {
 
             {/* Social Icons */}
             <div className="flex gap-4">
-              {socialLinks.map((link) => (
+              {heroSocialLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}

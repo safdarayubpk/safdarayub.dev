@@ -9,8 +9,7 @@ interface MDXRendererProps {
 }
 
 export async function MDXRenderer({ source }: MDXRendererProps) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const components = getMDXComponents() as any;
+  const components = getMDXComponents();
 
   const { content } = await compileMDX({
     source,
