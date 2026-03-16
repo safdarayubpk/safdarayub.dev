@@ -22,8 +22,8 @@ const contactChannels = [
   {
     icon: Youtube,
     label: "YouTube",
-    value: "@safdarayubpk",
-    href: "https://youtube.com/@safdarayubpk",
+    value: "@safdarayub3584",
+    href: "https://youtube.com/@safdarayub3584",
   },
   {
     icon: Phone,

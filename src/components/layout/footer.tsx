@@ -13,7 +13,7 @@ const quickLinks = [
 const socialLinks = [
   { href: "https://github.com/safdarayubpk", label: "GitHub", icon: Github },
   { href: "https://linkedin.com/in/safdarayubpk", label: "LinkedIn", icon: Linkedin },
-  { href: "https://youtube.com/@safdarayubpk", label: "YouTube", icon: Youtube },
+  { href: "https://youtube.com/@safdarayub3584", label: "YouTube", icon: Youtube },
   { href: "mailto:safdarayub@gmail.com", label: "Email", icon: Mail },
 ];
 
