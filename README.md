@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# safdarayub.dev
+
+Personal portfolio of **Safdar Ayub** — AI Engineer & Full Stack Developer.
+
+**Live:** [safdarayub-dev.vercel.app](https://safdarayub-dev.vercel.app)
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, Turbopack)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4 + shadcn/ui
+- **Content:** MDX (via next-mdx-remote)
+- **Email:** Resend API
+- **Analytics:** Vercel Analytics + Speed Insights
+- **Deployment:** Vercel
+
+## Features
+
+- Responsive, accessible design with dark/light mode
+- MDX blog with syntax highlighting, RSS feed, and tag filtering
+- Project showcase with category filters and detail pages
+- Contact form with Zod validation, rate limiting, and email delivery
+- Dynamic OG images for social sharing
+- SEO: sitemap, robots.txt, JSON-LD structured data, breadcrumbs
+- Security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy)
+- Scroll animations and page transitions
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Fill in RESEND_API_KEY and CONTACT_EMAIL
+
+# Run development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/              # Next.js App Router pages and API routes
+├── components/       # React components (layout, home, blog, projects, contact, ui)
+├── config/           # Centralized site configuration
+├── content/          # MDX blog posts and project data
+├── lib/              # Utilities (blog parser, projects, email, validation)
+└── types/            # TypeScript type definitions
+```
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server |
+| `pnpm build` | Production build |
+| `pnpm lint` | Run ESLint |
+| `pnpm start` | Start production server |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All rights reserved. This is a personal portfolio — not intended for reuse or redistribution.
