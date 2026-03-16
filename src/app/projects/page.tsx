@@ -11,6 +11,10 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   const projects = getProjects();
+  const categories = [
+    "All",
+    ...Array.from(new Set(projects.map((p) => p.category))),
+  ];
 
   return (
     <main className="py-16 md:py-24">
@@ -25,7 +29,7 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        <ProjectFilter projects={projects} />
+        <ProjectFilter projects={projects} categories={categories} />
       </div>
     </main>
   );

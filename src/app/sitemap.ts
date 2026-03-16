@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 import { getProjectSlugs } from "@/lib/projects";
 import { getBlogSlugs } from "@/lib/blog";
+import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://safdarayub-dev.vercel.app";
+  const baseUrl = siteConfig.url;
 
   const staticPages = [
     "",

@@ -1,35 +1,36 @@
 import { Mail, Linkedin, Github, Youtube, Phone, MapPin, Clock, Globe } from "lucide-react";
+import { socialLinks, contactInfo } from "@/config/site";
 
 const contactChannels = [
   {
     icon: Mail,
     label: "Email",
-    value: "safdarayub@gmail.com",
-    href: "mailto:safdarayub@gmail.com",
+    value: contactInfo.email,
+    href: socialLinks.email,
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     value: "safdar-ayub",
-    href: "https://linkedin.com/in/safdar-ayub-a9884694",
+    href: socialLinks.linkedin,
   },
   {
     icon: Github,
     label: "GitHub",
     value: "safdarayubpk",
-    href: "https://github.com/safdarayubpk",
+    href: socialLinks.github,
   },
   {
     icon: Youtube,
     label: "YouTube",
     value: "@safdarayub3584",
-    href: "https://youtube.com/@safdarayub3584",
+    href: socialLinks.youtube,
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+92-332-961-1639",
-    href: "tel:+923329611639",
+    value: contactInfo.phone,
+    href: socialLinks.phone,
   },
 ];
 
@@ -61,7 +62,7 @@ export function ContactLinks() {
         <div className="space-y-3 text-sm text-muted-foreground">
           <div className="flex items-center gap-3">
             <MapPin className="h-4 w-4 flex-shrink-0" />
-            <span>Kohat District, KP, Pakistan</span>
+            <span>{contactInfo.location}</span>
           </div>
           <div className="flex items-center gap-3">
             <Globe className="h-4 w-4 flex-shrink-0" />
@@ -69,7 +70,7 @@ export function ContactLinks() {
           </div>
           <div className="flex items-center gap-3">
             <Clock className="h-4 w-4 flex-shrink-0" />
-            <span>PKT (UTC+5)</span>
+            <span>{contactInfo.timezone}</span>
           </div>
         </div>
       </div>

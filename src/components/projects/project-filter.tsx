@@ -5,20 +5,12 @@ import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/projects/project-card";
 import { Project } from "@/types/project";
 
-const categories = [
-  "All",
-  "AI Agents",
-  "Full Stack",
-  "Cloud-Native",
-  "Video/Media",
-  "Education",
-];
-
 interface ProjectFilterProps {
   projects: Project[];
+  categories: string[];
 }
 
-export function ProjectFilter({ projects }: ProjectFilterProps) {
+export function ProjectFilter({ projects, categories }: ProjectFilterProps) {
   const [active, setActive] = useState("All");
 
   const filtered =
@@ -36,6 +28,7 @@ export function ProjectFilter({ projects }: ProjectFilterProps) {
             variant={active === cat ? "default" : "outline"}
             size="sm"
             onClick={() => setActive(cat)}
+            aria-pressed={active === cat}
             className="rounded-full"
           >
             {cat}

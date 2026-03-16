@@ -36,6 +36,7 @@ export function BlogFilter({ posts, tags }: BlogFilterProps) {
           variant={active === "All" ? "default" : "outline"}
           size="sm"
           onClick={() => setActive("All")}
+          aria-pressed={active === "All"}
           className="rounded-full"
         >
           All
@@ -46,6 +47,7 @@ export function BlogFilter({ posts, tags }: BlogFilterProps) {
             variant={active === tag ? "default" : "outline"}
             size="sm"
             onClick={() => setActive(tag)}
+            aria-pressed={active === tag}
             className="rounded-full"
           >
             {tag}

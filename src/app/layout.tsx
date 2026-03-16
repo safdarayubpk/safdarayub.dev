@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { siteConfig, socialLinks } from "@/config/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,8 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://safdarayub-dev.vercel.app";
+const siteUrl = siteConfig.url;
 
 export const viewport: Viewport = {
   themeColor: [
@@ -81,11 +81,11 @@ export default function RootLayout({
               "@type": "Person",
               name: "Safdar Ayub",
               jobTitle: "AI Engineer & Full Stack Developer",
-              url: "https://safdarayub-dev.vercel.app",
+              url: siteUrl,
               sameAs: [
-                "https://github.com/safdarayubpk",
-                "https://linkedin.com/in/safdar-ayub-a9884694",
-                "https://youtube.com/@safdarayub3584",
+                socialLinks.github,
+                socialLinks.linkedin,
+                socialLinks.youtube,
               ],
               address: {
                 "@type": "PostalAddress",

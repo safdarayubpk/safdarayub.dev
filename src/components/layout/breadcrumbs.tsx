@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 interface BreadcrumbItem {
   label: string;
@@ -15,7 +16,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
     "@type": "ListItem" as const,
     position: index + 1,
     name: item.label,
-    ...(item.href ? { item: `https://safdarayub-dev.vercel.app${item.href}` } : {}),
+    ...(item.href ? { item: `${siteConfig.url}${item.href}` } : {}),
   }));
 
   return (
