@@ -85,7 +85,7 @@ export default function RootLayout({
               sameAs: [
                 "https://github.com/safdarayubpk",
                 "https://linkedin.com/in/safdar-ayub-a9884694",
-                "https://youtube.com/@safdarayubpk",
+                "https://youtube.com/@safdarayub3584",
               ],
               address: {
                 "@type": "PostalAddress",

@@ -7,7 +7,7 @@ const socialLinks = [
   { href: "https://github.com/safdarayubpk", label: "GitHub", icon: Github },
   { href: "https://linkedin.com/in/safdar-ayub-a9884694", label: "LinkedIn", icon: Linkedin },
   { href: "mailto:safdarayub@gmail.com", label: "Email", icon: Mail },
-  { href: "https://youtube.com/@safdarayubpk", label: "YouTube", icon: Youtube },
+  { href: "https://youtube.com/@safdarayub3584", label: "YouTube", icon: Youtube },
 ];
 
 export function Hero() {
