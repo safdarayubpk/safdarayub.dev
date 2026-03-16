@@ -35,7 +35,7 @@ export function Footer() {
           {/* Quick links */}
           <nav aria-label="Footer navigation">
             <h3 className="text-sm font-semibold mb-3">Quick Links</h3>
-            <ul className="space-y-2">
+            <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -52,7 +52,7 @@ export function Footer() {
           {/* Social links */}
           <div>
             <h3 className="text-sm font-semibold mb-3">Connect</h3>
-            <div className="flex gap-3">
+            <div className="flex gap-3 mb-4">
               {socialLinks.map((link) => (
                 <a
                   key={link.href}
@@ -66,6 +66,12 @@ export function Footer() {
                 </a>
               ))}
             </div>
+            <p className="text-sm text-muted-foreground">
+              safdarayub@gmail.com
+            </p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Kohat District, Pakistan
+            </p>
           </div>
         </div>
 
