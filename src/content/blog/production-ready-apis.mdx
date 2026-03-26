@@ -1,0 +1,194 @@
+---
+title: "Designing Production-Ready APIs: Lessons From a Contact Form"
+date: "2026-03-25"
+author: "Safdar Ayub"
+tags: ["API Design", "Tutorials", "Backend"]
+readTime: "9 min read"
+excerpt: "A simple contact form API taught me everything about input validation, rate limiting, and proper error handling. Here's the playbook I follow for every endpoint I ship."
+published: true
+---
+
+## A Contact Form Is Never "Simple"
+
+When I built the contact form for this portfolio, I assumed it would be the easiest part. Accept a name, email, subject, and message. Send an email. Done.
+
+Then reality set in. What happens when someone submits an empty body? What about a malformed email? What if a bot hammers the endpoint 1,000 times per second? What if the email service goes down?
+
+A contact form touches every concern that matters in production API design: input validation, rate limiting, error handling, and security. Let me walk you through how I solved each one — with real code from this site.
+
+## 1. Input Validation With Zod
+
+The first line of defense is never trusting the client. Form validation in the browser is a courtesy — server-side validation is the law.
+
+I use [Zod](https://zod.dev/) to define a schema that describes exactly what the API accepts:
+
+```typescript
+import { z } from "zod";
+
+export const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  subject: z.enum([
+    "Job Opportunity",
+    "Freelance Project",
+    "Collaboration",
+    "General Inquiry",
+  ]),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(2000, "Message must be under 2000 characters"),
+});
+
+export type ContactFormData = z.infer<typeof contactSchema>;
+```
+
+The key pattern here is `safeParse` instead of `parse`. While `parse` throws on invalid input, `safeParse` returns a discriminated union — either `{ success: true, data }` or `{ success: false, error }`. This gives you full control over the error response:
+
+```typescript
+const result = contactSchema.safeParse(body);
+
+if (!result.success) {
+  return NextResponse.json(
+    { error: "Invalid form data", details: result.error.flatten() },
+    { status: 400 }
+  );
+}
+```
+
+The `flatten()` method converts Zod's nested error structure into a flat object that's easy for the frontend to consume. No need to parse deeply nested error trees — just map field names to error messages.
+
+**Why this matters for software houses:** Every production API needs input validation. Zod schemas are reusable between client and server, they generate TypeScript types automatically, and they compose well for complex nested objects. This isn't just a contact form pattern — it's the same approach I'd use for any API.
+
+## 2. Rate Limiting
+
+Without rate limiting, any public endpoint is an open invitation for abuse. Even a simple contact form can be weaponized for spam or used to drain your email API quota.
+
+Here's the rate limiter I built — an in-memory Map that tracks request counts per IP:
+
+```typescript
+const rateLimit = new Map<string, { count: number; resetAt: number }>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+
+  // Prevent unbounded Map growth
+  if (rateLimit.size > 100) {
+    for (const [key, entry] of rateLimit) {
+      if (now > entry.resetAt) rateLimit.delete(key);
+    }
+  }
+
+  const entry = rateLimit.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimit.set(ip, { count: 1, resetAt: now + 60 * 60 * 1000 });
+    return false;
+  }
+
+  if (entry.count >= 3) {
+    return true;
+  }
+
+  entry.count++;
+  return false;
+}
+```
+
+A few design decisions worth noting:
+
+- **Sliding window per IP:** Each IP gets 3 requests per hour. The window resets after the first request's hour expires, not on a fixed schedule.
+- **Memory cleanup:** When the Map exceeds 100 entries, expired entries are purged. This prevents a slow memory leak in long-running processes.
+- **Graceful degradation:** In-memory rate limiting resets on cold starts (serverless deployments). For a portfolio contact form, this is acceptable. For a payment API, you'd use Redis or a dedicated rate-limiting service.
+
+**When to level up:** For production systems at scale, consider libraries like `rate-limiter-flexible` backed by Redis, or API gateway-level rate limiting (AWS API Gateway, Cloudflare). The principle stays the same — only the storage layer changes.
+
+## 3. Proper HTTP Status Codes
+
+One of the easiest ways to spot a junior developer's API is how it handles errors. If every error returns 500, or worse, 200 with an error message in the body, the API is lying to its consumers.
+
+Here's the status code strategy for the contact endpoint:
+
+```typescript
+export async function POST(request: NextRequest) {
+  try {
+    const ip = request.headers.get("x-forwarded-for")
+      ?.split(",")[0]?.trim() || "unknown";
+
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
+    const body = await request.json();
+    const result = contactSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Invalid form data", details: result.error.flatten() },
+        { status: 400 }
+      );
+    }
+
+    await sendContactEmail(result.data);
+
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json(
+      { error: "Something went wrong. Please try again later." },
+      { status: 500 }
+    );
+  }
+}
+```
+
+The mapping is clear:
+
+| Status | Meaning | When |
+|--------|---------|------|
+| **200** | Success | Email sent successfully |
+| **400** | Bad Request | Validation failed (client's fault) |
+| **429** | Too Many Requests | Rate limit exceeded |
+| **500** | Internal Server Error | Unexpected failure (our fault) |
+
+Each status code tells the client exactly what happened and what to do next. A 400 means "fix your input." A 429 means "slow down." A 500 means "not your fault, try later."
+
+## 4. Security Considerations
+
+Production APIs leak information by default if you're not careful. A few principles I follow:
+
+**Never expose internal details in error responses.** The 500 handler returns a generic message, not a stack trace or database error. In development you want verbose errors; in production you want silence.
+
+**Validate before processing.** The rate limit check happens before JSON parsing. If someone is spamming the endpoint, we reject them as early as possible — no wasted CPU on parsing or validation.
+
+**Don't trust headers blindly.** The `x-forwarded-for` header can be spoofed. For a portfolio, this is fine. For a banking app, you'd combine it with other signals and use a reverse proxy you control.
+
+**Type the entire boundary.** By inferring `ContactFormData` from the Zod schema, the TypeScript compiler ensures every field is handled correctly downstream. No runtime surprises from typos or missing fields.
+
+## The Military Mindset
+
+In the Pakistan Air Force, every system has a checklist. Before takeoff, before maintenance, before any operation. Not because checklists are fun — because they catch the errors that experience alone won't.
+
+API design benefits from the same mindset. My checklist for every endpoint:
+
+1. Is every input validated at the boundary?
+2. Is the endpoint rate-limited appropriately?
+3. Do status codes accurately reflect what happened?
+4. Does the error response reveal anything it shouldn't?
+5. Is the happy path tested? Are the error paths tested?
+
+This isn't over-engineering. It's the minimum bar for code that runs in production.
+
+## Your API Design Checklist
+
+If you're building APIs — whether for a portfolio project or a production system — here's what I'd recommend:
+
+- **Use Zod (or similar)** for schema-based validation. Manual `if` checks don't scale and they miss edge cases.
+- **Add rate limiting** to every public endpoint. Start simple (in-memory), upgrade when you need to (Redis).
+- **Return meaningful status codes.** 200, 400, 401, 403, 404, 429, 500 — learn them, use them correctly.
+- **Keep error messages generic in production.** Log the details server-side, return safe messages to the client.
+- **Type your boundaries.** Infer types from validation schemas so the compiler works for you.
+
+A "simple" API that handles these concerns well is more impressive in an interview than a complex API that ignores them. Software houses care about reliability, not cleverness.
