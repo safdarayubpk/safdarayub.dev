@@ -20,5 +20,5 @@ export const aiVideoGenerationAgent: Project = {
     demo: "https://www.youtube.com/watch?v=7NoWCL33IUQ",
   },
   isFlagship: false,
-  priority: 2,
+  priority: 3,
 };

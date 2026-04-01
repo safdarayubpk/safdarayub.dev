@@ -126,6 +126,44 @@ export const projectDetails: Record<string, React.ReactNode> = {
     </>
   ),
 
+  "campaign-manager": (
+    <>
+      <h2>Overview</h2>
+      <p>
+        A full-stack CRM dashboard prototype demonstrating contacts management,
+        audience segmentation, and campaign workflows. The dashboard features
+        real-time KPI cards, lifecycle stage analytics, and campaign performance
+        charts — all rendered server-side for zero client-side data waterfalls.
+      </p>
+      <p>
+        Built with Next.js 16 App Router, Prisma v7 with a dual adapter pattern
+        (SQLite for local dev, Turso LibSQL for production), and ShadCN UI
+        components. Every API route is Zod-validated with input bounds and column
+        whitelisting.
+      </p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li>Dashboard with KPI cards and Recharts analytics (server component, no waterfalls)</li>
+        <li>Contacts data table with server-side search, filtering, sorting, and pagination</li>
+        <li>Visual segment rule builder with AND logic and live preview (debounced 300ms)</li>
+        <li>3-step campaign wizard: Select Audience → Compose Message → Review &amp; Send</li>
+        <li>Full CRUD operations via modal dialogs</li>
+        <li>Send simulation with realistic open/click statistics</li>
+      </ul>
+
+      <h2>Architecture Highlights</h2>
+      <ul>
+        <li>Prisma v7 dual adapter — <code>better-sqlite3</code> locally, <code>libsql</code> for Turso in production</li>
+        <li>Shared <code>buildWhereClause</code> function keeps segment filtering DRY across APIs</li>
+        <li>Route group <code>(app)</code> pattern for shared sidebar layout without URL pollution</li>
+        <li>Recharts loaded via <code>next/dynamic</code> with <code>ssr: false</code> to avoid hydration mismatches</li>
+        <li>Zod validation on all API routes with whitelisted sort columns and capped page size</li>
+        <li>Seed data: 55 contacts, 4 segments, 5 campaigns</li>
+      </ul>
+    </>
+  ),
+
   "ai-video-generation-agent": (
     <>
       <h2>Overview</h2>

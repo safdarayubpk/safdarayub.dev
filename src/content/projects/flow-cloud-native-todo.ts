@@ -22,5 +22,5 @@ export const flowCloudNativeTodo: Project = {
     live: "https://frontend-blue-six-59.vercel.app/login",
   },
   isFlagship: false,
-  priority: 3,
+  priority: 4,
 };

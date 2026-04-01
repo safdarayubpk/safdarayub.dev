@@ -22,5 +22,5 @@ export const roboticsTextbook: Project = {
     live: "https://2-book.vercel.app",
   },
   isFlagship: false,
-  priority: 4,
+  priority: 5,
 };

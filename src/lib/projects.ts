@@ -1,4 +1,5 @@
 import { personalAiEmployee } from "@/content/projects/personal-ai-employee";
+import { campaignManager } from "@/content/projects/campaign-manager";
 import { aiVideoGenerationAgent } from "@/content/projects/ai-video-generation-agent";
 import { flowCloudNativeTodo } from "@/content/projects/flow-cloud-native-todo";
 import { roboticsTextbook } from "@/content/projects/robotics-textbook";
@@ -6,6 +7,7 @@ import { Project } from "@/types/project";
 
 const allProjects: Project[] = [
   personalAiEmployee,
+  campaignManager,
   aiVideoGenerationAgent,
   flowCloudNativeTodo,
   roboticsTextbook,
