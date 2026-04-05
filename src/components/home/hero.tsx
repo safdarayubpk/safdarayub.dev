@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FileDown, ArrowRight, Mail, Github, Linkedin, Youtube } from "lucide-react";
+import { FileDown, ArrowRight, Mail, Github, Linkedin, Youtube, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { socialLinks as links } from "@/config/site";
 
@@ -45,7 +45,7 @@ export function Hero() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 mb-8">
+            <div className="flex flex-wrap gap-3 mb-8">
               <Button asChild size="lg">
                 <a href="/resume/Safdar_Ayub_Resume.pdf" download>
                   <FileDown className="mr-2 h-4 w-4" />
@@ -60,6 +60,16 @@ export function Hero() {
               </Button>
               <Button asChild variant="secondary" size="lg">
                 <Link href="/contact">Get in Touch</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <a
+                  href="https://www.youtube.com/watch?v=FdmDVuP7YzM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Play className="mr-2 h-4 w-4" />
+                  Watch My Story
+                </a>
               </Button>
             </div>
 
