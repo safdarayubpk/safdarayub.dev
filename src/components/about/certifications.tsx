@@ -13,6 +13,7 @@ const certifications = [
     title: "PCAP: Certified Associate in Python Programming",
     issuer: "Cisco / OpenEDG Python Institute",
     year: "2022",
+    image: "/images/pcap-python-certificate.png",
   },
   {
     title: "Quality Control & Management",
