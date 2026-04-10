@@ -6,6 +6,8 @@ import { BlogPostHeader } from "@/components/blog/blog-post-header";
 import { MDXRenderer } from "@/components/blog/mdx-renderer";
 import { RelatedPosts } from "@/components/blog/related-posts";
 import { ShareButtons } from "@/components/blog/share-buttons";
+import { TableOfContents } from "@/components/blog/table-of-contents";
+import { ReadingProgress } from "@/components/blog/reading-progress";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -25,6 +27,7 @@ export async function generateMetadata({
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.excerpt,
+    alternates: { canonical: `/blog/${slug}` },
     openGraph: {
       title: post.frontmatter.title,
       description: post.frontmatter.excerpt,
@@ -56,6 +59,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <main className="py-16 md:py-24">
+      <ReadingProgress />
       <div className="max-w-3xl mx-auto px-4 md:px-6">
         <Breadcrumbs
           items={[
@@ -67,6 +71,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         <article>
           <BlogPostHeader frontmatter={post.frontmatter} />
+          <TableOfContents />
           <MDXRenderer source={post.content} />
           <ShareButtons title={post.frontmatter.title} slug={slug} />
         </article>

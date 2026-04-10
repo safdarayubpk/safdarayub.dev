@@ -7,12 +7,15 @@ import { Story } from "@/components/about/story";
 import { Values } from "@/components/about/values";
 import { SkillsDetailed } from "@/components/about/skills-detailed";
 import { Education } from "@/components/about/education";
+import { Certifications } from "@/components/about/certifications";
+import { GitHubStats } from "@/components/about/github-stats";
 import { ByTheNumbers } from "@/components/about/by-the-numbers";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "From Pakistan Air Force to AI Engineering — the journey of Safdar Ayub.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -33,6 +36,8 @@ export default function AboutPage() {
       <Values />
       <SkillsDetailed />
       <Education />
+      <Certifications />
+      <GitHubStats />
       <ByTheNumbers />
 
       {/* Personal + CTA */}

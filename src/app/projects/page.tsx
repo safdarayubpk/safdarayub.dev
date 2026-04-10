@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Production AI agents, full-stack applications, and cloud-native systems by Safdar Ayub.",
+  alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {

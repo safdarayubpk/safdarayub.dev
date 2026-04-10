@@ -12,4 +12,5 @@ export interface Project {
   };
   isFlagship: boolean;
   priority: number;
+  lastUpdated?: string;
 }

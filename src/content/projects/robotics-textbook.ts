@@ -23,4 +23,5 @@ export const roboticsTextbook: Project = {
   },
   isFlagship: false,
   priority: 5,
+  lastUpdated: "2026-03-10",
 };

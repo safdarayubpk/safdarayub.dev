@@ -22,4 +22,5 @@ export const personalAiEmployee: Project = {
   },
   isFlagship: true,
   priority: 1,
+  lastUpdated: "2026-03-15",
 };

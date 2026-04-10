@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Privacy policy for safdarayub.dev — what data is collected and how it is used.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

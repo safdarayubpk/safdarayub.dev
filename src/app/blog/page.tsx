@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Insights on Agentic AI, full-stack development, and the journey from military to tech.",
+  alternates: { canonical: "/blog" },
 };
 
 export default function BlogPage() {

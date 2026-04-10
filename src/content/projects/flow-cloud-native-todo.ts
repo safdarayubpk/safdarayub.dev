@@ -23,4 +23,5 @@ export const flowCloudNativeTodo: Project = {
   },
   isFlagship: false,
   priority: 4,
+  lastUpdated: "2026-02-28",
 };

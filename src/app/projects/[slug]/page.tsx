@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: project.title.split("—")[0].trim(),
     description: project.oneLiner,
+    alternates: { canonical: `/projects/${slug}` },
     openGraph: {
       title: project.title.split("—")[0].trim(),
       description: project.oneLiner,

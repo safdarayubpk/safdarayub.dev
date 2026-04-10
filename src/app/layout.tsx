@@ -2,8 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
+import { SearchWrapper } from "@/components/layout/search-wrapper";
 import { Footer } from "@/components/layout/footer";
 import { BackToTop } from "@/components/layout/back-to-top";
+import { PageTransition } from "@/components/animations/page-transition";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { siteConfig, socialLinks } from "@/config/site";
@@ -48,6 +50,9 @@ export const metadata: Metadata = {
     "Cloud-Native",
     "Portfolio",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -114,8 +119,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main id="main-content" className="flex-1">{children}</main>
+          <Navbar>
+            <SearchWrapper />
+          </Navbar>
+          <main id="main-content" className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
           <BackToTop />
         </ThemeProvider>

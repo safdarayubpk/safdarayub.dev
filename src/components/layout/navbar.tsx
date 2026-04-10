@@ -16,7 +16,11 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-export function Navbar() {
+interface NavbarProps {
+  children?: React.ReactNode;
+}
+
+export function Navbar({ children }: NavbarProps) {
   const pathname = usePathname();
 
   return (
@@ -46,8 +50,9 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Right side: resume + theme toggle + mobile menu */}
+        {/* Right side: search + resume + theme toggle + mobile menu */}
         <div className="flex items-center gap-2">
+          {children}
           <Button asChild variant="default" size="sm" className="hidden md:flex">
             <a href="/resume/Safdar_Ayub_Resume.pdf" download>
               <FileDown className="mr-2 h-4 w-4" />

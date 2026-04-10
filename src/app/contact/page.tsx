@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Get in touch with Safdar Ayub — AI Engineer & Full Stack Developer. Available for remote work worldwide.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

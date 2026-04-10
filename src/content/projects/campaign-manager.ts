@@ -23,4 +23,5 @@ export const campaignManager: Project = {
   },
   isFlagship: false,
   priority: 2,
+  lastUpdated: "2026-04-01",
 };

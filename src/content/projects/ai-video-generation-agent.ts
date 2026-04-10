@@ -21,4 +21,5 @@ export const aiVideoGenerationAgent: Project = {
   },
   isFlagship: false,
   priority: 3,
+  lastUpdated: "2026-03-20",
 };

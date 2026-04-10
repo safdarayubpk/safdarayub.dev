@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, ExternalLink, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -42,6 +42,16 @@ export function ProjectDetailLayout({
             {project.title}
           </h1>
           <p className="text-muted-foreground text-lg">{project.oneLiner}</p>
+          {project.lastUpdated && (
+            <p className="text-sm text-muted-foreground mt-3 flex items-center gap-1.5">
+              <Calendar className="h-3.5 w-3.5" />
+              Last updated{" "}
+              {new Date(project.lastUpdated).toLocaleDateString("en-US", {
+                month: "long",
+                year: "numeric",
+              })}
+            </p>
+          )}
         </div>
 
         {/* Links */}
@@ -106,6 +116,23 @@ export function ProjectDetailLayout({
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-16 rounded-lg border bg-muted/50 p-8 text-center">
+          <h2 className="text-xl font-bold mb-2">
+            Interested in similar work?
+          </h2>
+          <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+            I build AI agents, full-stack applications, and cloud-native
+            systems. Let&apos;s discuss your next project.
+          </p>
+          <Button asChild size="lg">
+            <Link href="/contact">
+              Get in Touch
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
 
         {/* Other projects */}

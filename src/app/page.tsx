@@ -1,6 +1,7 @@
 import { Hero } from "@/components/home/hero";
 import { StatsBar } from "@/components/home/stats-bar";
 import { SkillsGrid } from "@/components/home/skills-grid";
+import { Services } from "@/components/home/services";
 import { FeaturedProjects } from "@/components/home/featured-projects";
 import { Timeline } from "@/components/home/timeline";
 import { Testimonials } from "@/components/home/testimonials";
@@ -18,6 +19,9 @@ export default function Home() {
       </AnimateOnScroll>
       <AnimateOnScroll variant="fade-up" delay={0.1}>
         <SkillsGrid />
+      </AnimateOnScroll>
+      <AnimateOnScroll variant="fade-up" delay={0.1}>
+        <Services />
       </AnimateOnScroll>
       <AnimateOnScroll variant="fade-up" delay={0.1}>
         <FeaturedProjects />
