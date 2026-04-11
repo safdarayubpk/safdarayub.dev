@@ -2,7 +2,7 @@ import { CountUp } from "@/components/animations/count-up";
 
 const stats = [
   { value: "23+", label: "Years of Service" },
-  { value: "148+", label: "GitHub Repositories" },
+  { value: "150+", label: "GitHub Repositories" },
   { value: "4", label: "Custom MCP Servers" },
   { value: "21+", label: "Architecture Decision Records" },
   { value: "Platinum", label: "Hackathon Achievement" },

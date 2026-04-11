@@ -1,6 +1,6 @@
 const metrics = [
   { value: "23+", label: "Years of Military Service" },
-  { value: "148+", label: "GitHub Repositories" },
+  { value: "150+", label: "GitHub Repositories" },
   { value: "21+", label: "Architecture Decision Records" },
   { value: "4", label: "Custom MCP Servers" },
   { value: "13", label: "Claude Code Skills" },
