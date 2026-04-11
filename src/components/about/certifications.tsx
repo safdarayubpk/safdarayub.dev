@@ -15,11 +15,6 @@ const certifications = [
     year: "2022",
     image: "/images/pcap-python-certificate.png",
   },
-  {
-    title: "Quality Control & Management",
-    issuer: "Pakistan Air Force",
-    year: "During service",
-  },
 ];
 
 export function Certifications() {
@@ -28,7 +23,7 @@ export function Certifications() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <h2 className="text-3xl font-bold text-center mb-12">Certifications</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {certifications.map((cert) => (
             <Card key={cert.title} className="overflow-hidden h-full">
               {cert.image && (
