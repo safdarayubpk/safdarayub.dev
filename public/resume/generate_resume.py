@@ -22,6 +22,12 @@ DARK_GRAY  = colors.HexColor("#1a1a1a")
 MID_GRAY   = colors.HexColor("#444444")
 LIGHT_GRAY = colors.HexColor("#666666")
 RULE_COLOR = colors.HexColor("#cccccc")
+LINK_COLOR = colors.HexColor("#1a56db")   # blue for all hyperlinks
+
+# ── Link helper ───────────────────────────────────────────────────────────────
+def a(text, url):
+    """Return an inline hyperlink span for use inside Paragraph markup."""
+    return f'<a href="{url}" color="{LINK_COLOR.hexval()}"><u>{text}</u></a>'
 
 # ── Document ──────────────────────────────────────────────────────────────────
 doc = SimpleDocTemplate(
@@ -117,8 +123,11 @@ story = []
 story.append(Paragraph("SAFDAR AYUB", name_style))
 story.append(Paragraph("AI Engineer | Full Stack Developer | Cloud-Native Kubernetes", title_style))
 story.append(Paragraph(
-    "safdarayub@gmail.com | +92-332-961-1639 | Pakistan<br/>"
-    "safdarayub-dev.vercel.app | LinkedIn | GitHub | YouTube",
+    f'safdarayub@gmail.com | +92-332-961-1639 | Pakistan<br/>'
+    f'{a("safdarayub-dev.vercel.app", "https://safdarayub-dev.vercel.app")} | '
+    f'{a("LinkedIn", "https://linkedin.com/in/safdar-ayub-a9884694")} | '
+    f'{a("GitHub", "https://github.com/safdarayubpk")} | '
+    f'{a("YouTube", "https://youtube.com/@safdarayub3584")}',
     contact_style))
 
 # Professional Summary
@@ -174,9 +183,21 @@ for label, value in skills:
 # Key Projects
 story += section("Key Projects")
 
+PAI_GH   = "https://github.com/safdarayubpk/PersonalAIEmployee"
+AHF_GH   = "https://github.com/safdarayubpk/ahf-auto-parts"
+AHF_LIVE = "https://ahf-auto-parts.vercel.app"
+CM_GH    = "https://github.com/safdarayubpk/campaign-manager"
+CM_LIVE  = "https://campaign-manager-flax.vercel.app"
+VID_GH   = "https://github.com/safdarayubpk/general-agent-video-maker"
+VID_YT   = "https://www.youtube.com/watch?v=7NoWCL33IUQ"
+FLOW_GH  = "https://github.com/safdarayubpk/flow"
+FLOW_LV  = "https://frontend-blue-six-59.vercel.app/login"
+ROB_GH   = "https://github.com/safdarayubpk/robotics-textbook"
+ROB_LIVE = "https://2-book.vercel.app"
+
 projects = [
     {
-        "title": "Personal AI Employee — Autonomous Agent System (Hackathon Platinum Tier) | GitHub",
+        "title": f'Personal AI Employee — Autonomous Agent System (Hackathon Platinum Tier) | {a("GitHub", PAI_GH)}',
         "tech": "Tech Stack: Python, FastMCP, Claude Code, Gmail OAuth2, Playwright, Odoo RPC, APScheduler, Obsidian, PM2",
         "bullets": [
             "Built local-first AI agent monitoring Gmail, filesystem, and WhatsApp with priority-queue orchestration and human-in-the-loop approval gates",
@@ -186,7 +207,7 @@ projects = [
         ],
     },
     {
-        "title": "AHF Auto Parts — Production JDM E-Commerce Platform | GitHub | Live",
+        "title": f'AHF Auto Parts — Production JDM E-Commerce Platform | {a("GitHub", AHF_GH)} | {a("Live", AHF_LIVE)}',
         "tech": "Tech Stack: Next.js 16, TypeScript, PostgreSQL/Neon, Prisma, NextAuth.js v5, Stripe, Cloudinary, Zustand, Upstash Redis, Resend, Vercel",
         "bullets": [
             "Built production-grade e-commerce platform for a Japan-based auto parts business — vehicle compatibility lookup (Make → Model → Year cascade), product catalog with search/filter/sort, and image gallery",
@@ -196,7 +217,7 @@ projects = [
         ],
     },
     {
-        "title": "Campaign Manager — Full-Stack CRM Dashboard | GitHub | Live Demo",
+        "title": f'Campaign Manager — Full-Stack CRM Dashboard | {a("GitHub", CM_GH)} | {a("Live Demo", CM_LIVE)}',
         "tech": "Tech Stack: Next.js 16, TypeScript, Tailwind CSS, ShadCN UI, Prisma, Turso/LibSQL, Zod, Recharts",
         "bullets": [
             "Built a full-stack CRM prototype with contacts CRUD, audience segmentation rule builder, multi-step campaign wizard, and analytics dashboard",
@@ -206,7 +227,7 @@ projects = [
         ],
     },
     {
-        "title": "AI Video Generation Agent — End-to-End Content Automation | GitHub | YouTube Demo",
+        "title": f'AI Video Generation Agent — End-to-End Content Automation | {a("GitHub", VID_GH)} | {a("YouTube Demo", VID_YT)}',
         "tech": "Tech Stack: TypeScript, React, Remotion, Claude Code (Opus), Gemini TTS, Spring Physics, Lucide React",
         "bullets": [
             "Built AI pipeline that generates complete motion graphics videos from text prompts: script to storyboard to scenes to narration to rendered video",
@@ -215,7 +236,7 @@ projects = [
         ],
     },
     {
-        "title": "AI-Powered Todo Application (8-Phase Cloud-Native Evolution) | GitHub | Live",
+        "title": f'AI-Powered Todo Application (8-Phase Cloud-Native Evolution) | {a("GitHub", FLOW_GH)} | {a("Live", FLOW_LV)}',
         "tech": "Tech Stack: Next.js, FastAPI, SQLModel, Groq API, Docker, Kubernetes, Helm 3, Dapr, Apache Kafka, OCI OKE, Neon PostgreSQL",
         "bullets": [
             "Evolved application across 8 phases: Console App to Full-Stack to AI Chatbot to Kubernetes to Kafka Events to Dapr Microservices to OCI Cloud",
@@ -224,7 +245,7 @@ projects = [
         ],
     },
     {
-        "title": "Physical AI & Humanoid Robotics Interactive Textbook | GitHub | Live",
+        "title": f'Physical AI &amp; Humanoid Robotics Interactive Textbook | {a("GitHub", ROB_GH)} | {a("Live", ROB_LIVE)}',
         "tech": "Tech Stack: Docusaurus, React, FastAPI, OpenAI Agents SDK, MCP SDK, Neon DB, Qdrant, Better Auth, Vercel",
         "bullets": [
             "Built interactive textbook with RAG chatbot using OpenAI Agents SDK, FastAPI, Neon Postgres, and Qdrant Cloud",
