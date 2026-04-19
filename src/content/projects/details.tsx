@@ -126,6 +126,74 @@ export const projectDetails: Record<string, React.ReactNode> = {
     </>
   ),
 
+  "ahf-auto-parts": (
+    <>
+      <h2>Overview</h2>
+      <p>
+        A production-grade e-commerce platform built for a Japan-based auto
+        parts business. The platform supports the complete customer journey —
+        browsing by vehicle or category, cart management, Stripe and bank
+        transfer checkout, order tracking, and a full admin dashboard for
+        business operations.
+      </p>
+      <p>
+        Markets: Japan · Pakistan · International. Parts catalogue covers
+        genuine OEM, new aftermarket, and graded used parts (Grade A–D), all
+        sourced directly from Japan.
+      </p>
+
+      <h2>Key Features</h2>
+      <div className="not-prose overflow-x-auto">
+        <table className="w-full text-sm border border-border rounded-lg">
+          <thead>
+            <tr className="bg-muted">
+              <th className="px-4 py-2 text-left font-semibold">Area</th>
+              <th className="px-4 py-2 text-left font-semibold">Features</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2 font-medium">Storefront</td>
+              <td className="px-4 py-2">Vehicle compatibility lookup (Make → Model → Year cascade), product catalog with search/filter/sort, image gallery, stock status</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2 font-medium">Cart & Checkout</td>
+              <td className="px-4 py-2">Zustand cart drawer, wishlist with badge, Stripe Checkout, manual bank transfer, 30-min stock reservation to prevent overselling</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2 font-medium">Auth & Account</td>
+              <td className="px-4 py-2">Google OAuth + credentials (NextAuth.js v5), order history, saved addresses, wishlist management</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2 font-medium">Admin Dashboard</td>
+              <td className="px-4 py-2">Product manager (Cloudinary upload), order status updates, customer list, vehicle/category management, inquiry inbox, Recharts analytics</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2 font-medium">SEO & Performance</td>
+              <td className="px-4 py-2">JSON-LD structured data, XML sitemap, SSG + ISR (60s), WebP/AVIF via Cloudinary CDN, Open Graph per page</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Architecture Highlights</h2>
+      <ul>
+        <li>SSG + ISR for storefront pages; SSR for auth-protected account and admin routes</li>
+        <li>Upstash Redis for rate limiting across API routes</li>
+        <li>Zustand stores (cart + wishlist) persisted to localStorage</li>
+        <li>Cloudinary + browser-image-compression for optimized product imagery</li>
+        <li>Resend for transactional emails (order confirmation, shipping updates)</li>
+        <li>30-minute stock reservation TTL to prevent checkout race conditions</li>
+      </ul>
+
+      <h2>Roadmap</h2>
+      <ul>
+        <li><strong>Phase 2 — AI Features:</strong> Semantic search (pgvector), AI chatbot (Vercel AI SDK), smart recommendations, abandoned cart recovery</li>
+        <li><strong>Phase 3 — Growth:</strong> B2B portal, multi-language (JP/EN), calculated shipping rates, loyalty program</li>
+      </ul>
+    </>
+  ),
+
   "campaign-manager": (
     <>
       <h2>Overview</h2>

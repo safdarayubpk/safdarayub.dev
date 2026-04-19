@@ -22,6 +22,6 @@ export const campaignManager: Project = {
     live: "https://campaign-manager-flax.vercel.app",
   },
   isFlagship: false,
-  priority: 2,
+  priority: 3,
   lastUpdated: "2026-04-01",
 };
