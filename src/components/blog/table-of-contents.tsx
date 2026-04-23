@@ -67,8 +67,16 @@ export function TableOfContents() {
               href={`#${heading.id}`}
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById(heading.id)?.scrollIntoView({
-                  behavior: "smooth",
+                const el = document.getElementById(heading.id);
+                if (!el) return;
+                const prefersReducedMotion = window.matchMedia(
+                  "(prefers-reduced-motion: reduce)"
+                ).matches;
+                const top =
+                  el.getBoundingClientRect().top + window.scrollY - 80;
+                window.scrollTo({
+                  top,
+                  behavior: prefersReducedMotion ? "instant" : "smooth",
                 });
               }}
               className={`block text-sm transition-colors ${
