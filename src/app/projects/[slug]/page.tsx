@@ -18,14 +18,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getProjectBySlug(slug);
   if (!project) return {};
 
+  const title = project.title.split("—")[0].trim();
   return {
-    title: project.title.split("—")[0].trim(),
+    title,
     description: project.oneLiner,
     alternates: { canonical: `/projects/${slug}` },
     openGraph: {
-      title: project.title.split("—")[0].trim(),
+      title,
       description: project.oneLiner,
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: project.oneLiner,
     },
   };
 }
