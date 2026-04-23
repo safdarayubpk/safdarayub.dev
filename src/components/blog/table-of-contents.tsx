@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, startTransition } from "react";
 
 interface TocItem {
   id: string;
@@ -25,7 +25,9 @@ export function TableOfContents() {
         level: el.tagName === "H2" ? 2 : 3,
       }));
 
-    setHeadings(items);
+    startTransition(() => {
+      setHeadings(items);
+    });
   }, []);
 
   useEffect(() => {
