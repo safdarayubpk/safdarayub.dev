@@ -1,6 +1,151 @@
 import { Badge } from "@/components/ui/badge";
 
 export const projectDetails: Record<string, React.ReactNode> = {
+  "ai-ml-job-market-pipeline": (
+    <>
+      <h2>Overview</h2>
+      <p>
+        An end-to-end ML data pipeline that monitors the AI/ML job market in
+        real time. A single <code>POST /run-pipeline</code> triggers the full
+        chain: async scraping → PostgreSQL storage → TF-IDF clustering →
+        seniority classification → Groq LLaMA 3.3 70B market briefing →
+        Google Sheets report with a dated tab per run.
+      </p>
+      <p>
+        Built as a portfolio project to demonstrate every layer of an ML
+        engineering stack — scraping, databases, unsupervised and supervised ML,
+        LLM integration, external API automation, and containerised deployment.
+        Live run: 97 jobs scraped, 8 clusters found, 36/36 tests passing.
+      </p>
+
+      <h2>Pipeline Architecture</h2>
+      <div className="not-prose overflow-x-auto">
+        <table className="w-full text-sm border border-border rounded-lg">
+          <thead>
+            <tr className="bg-muted">
+              <th className="px-4 py-2 text-left font-semibold">Step</th>
+              <th className="px-4 py-2 text-left font-semibold">Component</th>
+              <th className="px-4 py-2 text-left font-semibold">Technology</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">1</td>
+              <td className="px-4 py-2">Async Scraper</td>
+              <td className="px-4 py-2">aiohttp · asyncio · BeautifulSoup4 · RemoteOK JSON API</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">2</td>
+              <td className="px-4 py-2">Storage</td>
+              <td className="px-4 py-2">PostgreSQL · SQLAlchemy 2 · Alembic migrations</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">3</td>
+              <td className="px-4 py-2">Feature Extraction</td>
+              <td className="px-4 py-2">TF-IDF vectorisation (5,000 features) · skill frequency analysis</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">4</td>
+              <td className="px-4 py-2">Clustering</td>
+              <td className="px-4 py-2">K-Means · silhouette k-selection (k=2–7) · PCA visualisation</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">5</td>
+              <td className="px-4 py-2">Seniority Classifier</td>
+              <td className="px-4 py-2">Logistic Regression · LinearSVC · Random Forest · 5-fold CV F1</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">6</td>
+              <td className="px-4 py-2">LLM Insights</td>
+              <td className="px-4 py-2">Groq API · LLaMA 3.3 70B · structured prompt template</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">7</td>
+              <td className="px-4 py-2">Reporter</td>
+              <td className="px-4 py-2">gspread · Google Service Account · dated tab per run</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">8</td>
+              <td className="px-4 py-2">API</td>
+              <td className="px-4 py-2">FastAPI · uvicorn · POST /run-pipeline</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Key Engineering Decisions</h2>
+      <ul>
+        <li>
+          <strong>Silhouette k-selection:</strong> <code>find_optimal_k()</code> tries k=2–7 and picks the highest silhouette score automatically — no hardcoded cluster count, adapts to each day&apos;s data distribution
+        </li>
+        <li>
+          <strong>Classifier comparison:</strong> All three models are evaluated via 5-fold cross-validation F1 macro on every run — the winning model and score are returned in the API response
+        </li>
+        <li>
+          <strong>RemoteOK JSON API over Playwright:</strong> Switched from headless browser scraping to the public JSON API via aiohttp — more reliable, faster, no browser install
+        </li>
+        <li>
+          <strong>Deduplication by URL:</strong> Jobs are keyed on <code>source_url</code> — re-running never double-counts; second run on the same day shows <code>jobs_scraped: 0</code> by design
+        </li>
+        <li>
+          <strong>SQLite in tests:</strong> Integration tests use SQLite in-memory with mocked LLM and Sheets — no external services needed in CI
+        </li>
+        <li>
+          <strong>Groq free tier:</strong> LLaMA 3.3 70B via Groq — no credit card required; rate-limit retries built in with 10-second backoff
+        </li>
+      </ul>
+
+      <h2>Live Run Results (2026-04-23)</h2>
+      <div className="not-prose overflow-x-auto">
+        <table className="w-full text-sm border border-border rounded-lg">
+          <thead>
+            <tr className="bg-muted">
+              <th className="px-4 py-2 text-left font-semibold">Metric</th>
+              <th className="px-4 py-2 text-left font-semibold">Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Jobs scraped</td>
+              <td className="px-4 py-2 font-mono">97</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Clusters found</td>
+              <td className="px-4 py-2 font-mono">8</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Best classifier (F1)</td>
+              <td className="px-4 py-2 font-mono">LogisticRegression — 0.417</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">LinearSVC F1</td>
+              <td className="px-4 py-2 font-mono">0.404</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Random Forest F1</td>
+              <td className="px-4 py-2 font-mono">0.351</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Tests passing</td>
+              <td className="px-4 py-2 font-mono">36 / 36</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Google Sheets Output</h2>
+      <p>
+        Each pipeline run writes a new dated tab (e.g. <code>2026-04-23</code>) containing:
+      </p>
+      <ul>
+        <li>LLM-generated 2–3 paragraph market intelligence briefing</li>
+        <li>Top 20 skills by mention rate across all job listings</li>
+        <li>Cluster breakdown — job count and percentage per cluster</li>
+        <li>Seniority distribution — junior / mid / senior counts</li>
+      </ul>
+    </>
+  ),
+
   "personal-ai-employee": (
     <>
       <h2>Overview</h2>

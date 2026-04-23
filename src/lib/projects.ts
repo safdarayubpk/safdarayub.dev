@@ -1,4 +1,5 @@
 import { personalAiEmployee } from "@/content/projects/personal-ai-employee";
+import { aiMlJobMarketPipeline } from "@/content/projects/ai-ml-job-market-pipeline";
 import { ahfAutoParts } from "@/content/projects/ahf-auto-parts";
 import { campaignManager } from "@/content/projects/campaign-manager";
 import { aiVideoGenerationAgent } from "@/content/projects/ai-video-generation-agent";
@@ -8,6 +9,7 @@ import { Project } from "@/types/project";
 
 const allProjects: Project[] = [
   personalAiEmployee,
+  aiMlJobMarketPipeline,
   ahfAutoParts,
   campaignManager,
   aiVideoGenerationAgent,
