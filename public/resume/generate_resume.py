@@ -150,6 +150,8 @@ story += section("Technical Skills")
 skills = [
     ("AI & Agentic Systems",
      "OpenAI Agents SDK, Claude Code (Opus), MCP SDK, FastMCP, Prompt Engineering, RAG Systems, Gemini TTS"),
+    ("ML & Data Science",
+     "scikit-learn (TF-IDF, KMeans, LogisticRegression, LinearSVC, RandomForest), 5-fold CV, Groq API (Llama 3.3 70B), aiohttp, gspread, Alembic"),
     ("Programming Languages",
      "Python, TypeScript, JavaScript"),
     ("Frontend",
@@ -184,6 +186,7 @@ for label, value in skills:
 story += section("Key Projects")
 
 PAI_GH   = "https://github.com/safdarayubpk/PersonalAIEmployee"
+AIML_GH  = "https://github.com/safdarayubpk/ai-ml-job-market-pipeline"
 AHF_GH   = "https://github.com/safdarayubpk/ahf-auto-parts"
 AHF_LIVE = "https://ahf-auto-parts.vercel.app"
 CM_GH    = "https://github.com/safdarayubpk/campaign-manager"
@@ -204,6 +207,16 @@ projects = [
             "Implemented 4 custom FastMCP servers (email, social media, Odoo ERP, documents) with circuit breaker patterns and correlation ID tracking",
             "Designed risk-based action routing (routine/sensitive/critical) with dry-run defaults and PM2 process management",
             "Integrated Obsidian vault pipeline with 12 Claude Code skills for automated task processing and weekly CEO briefing generation",
+        ],
+    },
+    {
+        "title": f'AI/ML Job Market Intelligence Pipeline | {a("GitHub", AIML_GH)}',
+        "tech": "Tech Stack: Python, aiohttp, PostgreSQL, SQLAlchemy, Alembic, scikit-learn (TF-IDF, KMeans, LR, LinearSVC, RF), Groq API (Llama 3.3 70B), FastAPI, gspread, Docker, pytest",
+        "bullets": [
+            "Scraped 97 AI/ML jobs from RemoteOK with aiohttp/asyncio; stored with SQLAlchemy ORM and Alembic migrations on PostgreSQL",
+            "Clustered jobs using silhouette-optimized KMeans (k=8) with TF-IDF vectorization, surfacing meaningful segments: Research, Applied ML, MLOps, NLP, CV, and more",
+            "Built 3-model seniority classifier (Logistic Regression, LinearSVC, Random Forest) with 5-fold cross-validation, auto-selecting top performer by accuracy + F1",
+            "Generated natural-language market briefings via Groq API (Llama 3.3 70B) and pushed dated tab reports to Google Sheets — entire pipeline triggered by a single POST /run-pipeline endpoint",
         ],
     },
     {
