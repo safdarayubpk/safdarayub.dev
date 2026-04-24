@@ -48,13 +48,17 @@ export function GitHubStats() {
           <CardContent className="pt-6">
             <h3 className="text-sm font-semibold mb-4">Top Languages</h3>
             {/* Combined progress bar */}
-            <div className="flex rounded-full overflow-hidden h-3 mb-4">
+            <div
+              className="flex rounded-full overflow-hidden h-3 mb-4"
+              role="img"
+              aria-label="Language breakdown: TypeScript 35%, Python 30%, JavaScript 15%, MDX 10%, CSS 5%, Other 5%"
+            >
               {languages.map((lang) => (
                 <div
                   key={lang.name}
                   className={`${lang.color}`}
                   style={{ width: `${lang.percentage}%` }}
-                  title={`${lang.name}: ${lang.percentage}%`}
+                  aria-hidden="true"
                 />
               ))}
             </div>
