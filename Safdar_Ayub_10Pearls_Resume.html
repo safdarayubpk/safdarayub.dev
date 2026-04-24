@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safdar Ayub — Staff Software Consultant | 10Pearls</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Arial', sans-serif;
+      font-size: 10.5pt;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.45;
+    }
+    .page {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 14mm 18mm 12mm 18mm;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #1a3a6b;
+      padding-bottom: 9px;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-size: 22pt;
+      font-weight: 900;
+      color: #1a3a6b;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .header .subtitle {
+      font-size: 11pt;
+      color: #2c5aa0;
+      font-weight: 700;
+      margin-top: 3px;
+      letter-spacing: 0.5px;
+    }
+    .header .contact-line {
+      font-size: 9.5pt;
+      color: #444;
+      margin-top: 6px;
+    }
+    .header .contact-line a {
+      color: #1a3a6b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .header .contact-line span {
+      margin: 0 7px;
+      color: #aaa;
+    }
+
+    /* SECTION HEADINGS */
+    .section {
+      margin-bottom: 11px;
+    }
+    .section-title {
+      font-size: 10pt;
+      font-weight: 900;
+      color: #fff;
+      background: #1a3a6b;
+      padding: 3px 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    /* SUMMARY */
+    .summary p {
+      font-size: 10pt;
+      color: #222;
+      text-align: justify;
+      line-height: 1.55;
+    }
+
+    /* SKILLS TABLE */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+    }
+    .skills-table td {
+      padding: 3px 8px;
+      vertical-align: top;
+      border-bottom: 1px solid #eef2fa;
+    }
+    .skills-table td:first-child {
+      font-weight: 800;
+      color: #1a3a6b;
+      width: 26%;
+      white-space: nowrap;
+    }
+    .skills-table tr:nth-child(even) td {
+      background: #f7f9fd;
+    }
+
+    /* PROJECTS */
+    .project {
+      margin-bottom: 10px;
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3px;
+    }
+    .project-title {
+      font-size: 10.5pt;
+      font-weight: 800;
+      color: #1a3a6b;
+    }
+    .project-links {
+      font-size: 8.8pt;
+    }
+    .project-links a {
+      color: #2c5aa0;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+    .project-tag-line {
+      font-size: 9.2pt;
+      color: #555;
+      margin-bottom: 4px;
+      font-style: italic;
+    }
+    .project ul {
+      padding-left: 15px;
+    }
+    .project ul li {
+      font-size: 9.5pt;
+      color: #222;
+      margin-bottom: 2px;
+      line-height: 1.45;
+    }
+    .tech-stack {
+      font-size: 8.8pt;
+      color: #555;
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .tech-stack strong {
+      color: #333;
+      font-style: normal;
+    }
+    .badge {
+      display: inline-block;
+      background: #e8f0fb;
+      color: #1a3a6b;
+      font-size: 8pt;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-right: 4px;
+      border: 1px solid #b0c4e8;
+    }
+
+    /* EXPERIENCE */
+    .job {
+      margin-bottom: 9px;
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .job-title {
+      font-size: 10.5pt;
+      font-weight: 800;
+      color: #1a3a6b;
+    }
+    .job-org {
+      font-size: 9.8pt;
+      font-weight: 600;
+      color: #333;
+    }
+    .job-period {
+      font-size: 9pt;
+      color: #555;
+      font-style: italic;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .job ul {
+      margin-top: 4px;
+      padding-left: 15px;
+    }
+    .job ul li {
+      font-size: 9.5pt;
+      color: #222;
+      margin-bottom: 2px;
+      line-height: 1.45;
+    }
+
+    /* EDUCATION */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+      font-size: 9.5pt;
+    }
+    .edu-degree {
+      font-weight: 700;
+      color: #1a3a6b;
+    }
+    .edu-year {
+      color: #888;
+      font-style: italic;
+      white-space: nowrap;
+    }
+    .edu-inst {
+      color: #555;
+    }
+
+    /* DIVIDER */
+    hr {
+      border: none;
+      border-top: 1px solid #d0daea;
+      margin: 5px 0 7px 0;
+    }
+
+    @media print {
+      body { background: #fff; }
+      @page { margin: 0; size: A4; }
+      .page { padding: 12mm 16mm 10mm 16mm; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Safdar Ayub</h1>
+    <div class="subtitle">AI-Assisted Full Stack Developer &nbsp;|&nbsp; SaaS Prototype Engineer &nbsp;|&nbsp; Vibe Coder</div>
+    <div class="contact-line">
+      safdarayub@gmail.com
+      <span>|</span>
+      +92-332-961-1639
+      <span>|</span>
+      Pakistan
+      <span>|</span>
+      <a href="https://safdarayub-dev.vercel.app">safdarayub-dev.vercel.app</a>
+      <span>|</span>
+      <a href="https://linkedin.com/in/safdar-ayub-a9884694">LinkedIn</a>
+      <span>|</span>
+      <a href="https://github.com/safdarayubpk">GitHub</a>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section summary">
+    <div class="section-title">Professional Summary</div>
+    <p>
+      AI-assisted Full Stack Developer and Vibe Coder with hands-on experience shipping production-grade SaaS applications using
+      <strong>Claude Code (Opus), Vercel V0, and Cursor</strong> as primary development accelerators. Built a full-stack
+      <strong>CRM and campaign management platform</strong> from scratch — contacts CRUD, visual audience segmentation rule builder,
+      multi-step campaign wizard, and analytics dashboards — deployed live in days, not months. Proficient in
+      <strong>Next.js 16, TypeScript, Tailwind CSS, ShadCN UI, Prisma, REST APIs</strong>, and third-party integrations (Stripe, Resend,
+      Cloudinary, Redis). Translates product briefs and wireframes directly into working prototypes within 2–3 days. Military-trained
+      discipline in quality and delivery — 23+ years of service ensuring zero-defect standards.
+    </p>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <table class="skills-table">
+      <tr>
+        <td>AI Dev Tools</td>
+        <td>Claude Code (Opus), Vercel V0, Cursor, OpenAI Agents SDK, MCP SDK, FastMCP, Prompt Engineering</td>
+      </tr>
+      <tr>
+        <td>Frontend</td>
+        <td>Next.js 16 (App Router), React.js, TypeScript, Tailwind CSS, ShadCN UI, Framer Motion, Recharts, Zustand, Remotion</td>
+      </tr>
+      <tr>
+        <td>Backend &amp; APIs</td>
+        <td>Node.js, FastAPI, REST APIs, Webhooks, Zod-validated API routes, React Hook Form, Server Actions</td>
+      </tr>
+      <tr>
+        <td>Databases &amp; ORM</td>
+        <td>PostgreSQL (Neon), SQLite, Turso/LibSQL, Prisma (v7 dual-adapter), SQLModel, Supabase, Qdrant Cloud, Upstash Redis</td>
+      </tr>
+      <tr>
+        <td>Auth &amp; Payments</td>
+        <td>NextAuth.js v5, Clerk, Better Auth, JWT, Gmail OAuth2 — Stripe Checkout, multi-role RBAC patterns</td>
+      </tr>
+      <tr>
+        <td>CRM / Campaign</td>
+        <td>Contacts CRUD, audience segmentation logic, multi-step campaign wizards, KPI analytics, event-driven triggers</td>
+      </tr>
+      <tr>
+        <td>Integrations</td>
+        <td>Stripe, Resend (transactional email), Cloudinary, Upstash Redis, Odoo ERP (RPC), Google OAuth, WhatsApp</td>
+      </tr>
+      <tr>
+        <td>DevOps &amp; Cloud</td>
+        <td>Docker, Kubernetes, Helm Charts, OCI/OKE, NGINX Ingress, Dapr, Apache Kafka, GitHub Actions, Vercel (SSG/ISR/SSR)</td>
+      </tr>
+      <tr>
+        <td>Languages</td>
+        <td>TypeScript, JavaScript, Python</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- KEY PROJECTS -->
+  <div class="section">
+    <div class="section-title">Key Projects</div>
+
+    <!-- Campaign Manager -->
+    <div class="project">
+      <div class="project-header">
+        <div class="project-title">
+          Campaign Manager — Full-Stack CRM &amp; Campaign Platform
+          &nbsp;<span class="badge">MOST RELEVANT</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/safdarayubpk/campaign-manager">GitHub</a> &nbsp;|&nbsp;
+          <a href="https://campaign-manager-flax.vercel.app/dashboard">Live Demo</a>
+        </div>
+      </div>
+      <div class="project-tag-line">CRM dashboard with audience segmentation, campaign workflows, and analytics — shipped as working prototype in days</div>
+      <ul>
+        <li>Built full-stack CRM with <strong>contacts CRUD, visual audience segmentation rule builder</strong> (AND logic, multiple operators, live 300ms-debounced preview), multi-step campaign wizard, and analytics dashboard</li>
+        <li>Implemented <strong>server-rendered dashboard</strong> with KPI cards and Recharts analytics — zero client-side data waterfalls; audience segmentation rule engine with live preview</li>
+        <li>Engineered <strong>Prisma v7 dual adapter pattern</strong> (SQLite local / Turso LibSQL production) with Zod-validated REST API routes — production-ready API foundation engineers can scale</li>
+        <li>Designed contact lifecycle model with audience targeting logic directly applicable to deposit optimization campaign features</li>
+      </ul>
+      <div class="tech-stack"><strong>Stack:</strong> Next.js 16, TypeScript, Tailwind CSS, ShadCN UI, Prisma, Turso/LibSQL, Zod, Recharts</div>
+    </div>
+
+    <hr/>
+
+    <!-- AHF Auto Parts -->
+    <div class="project">
+      <div class="project-header">
+        <div class="project-title">AHF Auto Parts — Production JDM E-Commerce SaaS Platform</div>
+        <div class="project-links">
+          <a href="https://github.com/safdarayubpk/ahf-auto-parts">GitHub</a> &nbsp;|&nbsp;
+          <a href="https://ahf-auto-parts.vercel.app/">Live</a>
+        </div>
+      </div>
+      <div class="project-tag-line">Full-stack production SaaS with admin dashboard, CRM-style order management, and Stripe payments</div>
+      <ul>
+        <li>Built production-grade SaaS platform with <strong>full admin dashboard</strong>: order management, customer list (CRM), product/category CRUD, contact inbox, and Recharts analytics</li>
+        <li>Implemented <strong>Stripe Checkout</strong> and bank transfer with 30-minute stock reservation (Upstash Redis) — preventing overselling during concurrent checkout sessions</li>
+        <li>Architected <strong>SSG + ISR (60s)</strong> for storefront and <strong>SSR</strong> for auth-protected admin routes; Google OAuth + credentials via NextAuth.js v5; transactional email via Resend</li>
+        <li>Delivered end-to-end in weeks using AI-augmented workflow (Claude Code) — production foundation ready for engineering team to scale</li>
+      </ul>
+      <div class="tech-stack"><strong>Stack:</strong> Next.js 16, TypeScript, PostgreSQL/Neon, Prisma, NextAuth.js v5, Stripe, Cloudinary, Zustand, Upstash Redis, Resend, Vercel</div>
+    </div>
+
+    <hr/>
+
+    <!-- Personal AI Employee -->
+    <div class="project">
+      <div class="project-header">
+        <div class="project-title">Personal AI Employee — Autonomous Agent System &nbsp;<span class="badge">HACKATHON PLATINUM</span></div>
+        <div class="project-links">
+          <a href="https://github.com/safdarayubpk/PersonalAIEmployee">GitHub</a>
+        </div>
+      </div>
+      <div class="project-tag-line">Demonstrates AI-augmented development: Claude Code as primary build tool + 4 custom MCP servers with event-driven triggers</div>
+      <ul>
+        <li>Built with <strong>Claude Code as primary development driver</strong> — 12 custom Claude Code skills for automated task processing</li>
+        <li>4 custom <strong>FastMCP servers</strong> (email, social media, Odoo ERP, documents) with circuit breaker patterns — directly analogous to CRM webhook connectors and third-party data integrations</li>
+        <li>Designed <strong>event-driven triggers</strong> and risk-based action routing (routine/sensitive/critical) — applicable to campaign automation and lifecycle trigger logic</li>
+      </ul>
+      <div class="tech-stack"><strong>Stack:</strong> Python, FastMCP, Claude Code (Opus), Gmail OAuth2, Playwright, Odoo RPC, APScheduler, PM2</div>
+    </div>
+
+    <hr/>
+
+    <!-- Robotics Textbook -->
+    <div class="project">
+      <div class="project-header">
+        <div class="project-title">Physical AI &amp; Humanoid Robotics Interactive Textbook</div>
+        <div class="project-links">
+          <a href="https://github.com/safdarayubpk/2.book">GitHub</a> &nbsp;|&nbsp;
+          <a href="https://2-book.vercel.app/">Live</a>
+        </div>
+      </div>
+      <ul>
+        <li>Built interactive SaaS with RAG chatbot using <strong>OpenAI Agents SDK, FastAPI, Neon Postgres, and Qdrant Cloud</strong></li>
+        <li>Implemented <strong>user authentication</strong> (Better Auth), role-based access, and API integrations — demonstrates multi-tenant SaaS patterns</li>
+      </ul>
+      <div class="tech-stack"><strong>Stack:</strong> Docusaurus, React, FastAPI, OpenAI Agents SDK, MCP SDK, Neon DB, Qdrant Cloud, Better Auth, Vercel</div>
+    </div>
+
+  </div>
+
+  <!-- PROFESSIONAL EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Quality Control Inspector &amp; Electronics Technician (Retired)</div>
+          <div class="job-org">Pakistan Air Force</div>
+        </div>
+        <div class="job-period">Feb 2000 – Mar 2023 &nbsp;(23 Years)</div>
+      </div>
+      <ul>
+        <li>Led quality control inspection across Air Logistics and engineering depots — enforcing zero-defect standards directly transferable to production SaaS delivery</li>
+        <li>Managed cross-functional technical teams, HR development, and liaison with international personnel — mirrors Agile collaboration with Product and Engineering stakeholders</li>
+        <li>Maintained mission-critical communication and avionics systems under strict operational SLAs — discipline applicable to 2-week ship cycles and rapid iteration</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EDUCATION & CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Education &amp; Certifications</div>
+    <div class="edu-row">
+      <div>
+        <span class="edu-degree">Certified Agentic and Robotic AI Engineer</span>
+        <span class="edu-inst"> &nbsp;— PIAIC, Air University Islamabad</span>
+      </div>
+      <div class="edu-year">Expected 2026</div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <span class="edu-degree">Master of Computer Science (CGPA: 3.11)</span>
+        <span class="edu-inst"> &nbsp;— Virtual University of Pakistan</span>
+      </div>
+      <div class="edu-year">2012</div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <span class="edu-degree">DAE Radio Technology (71%)</span>
+        <span class="edu-inst"> &nbsp;— School of Electronics, PAF Korangi Creek</span>
+      </div>
+      <div class="edu-year">2003</div>
+    </div>
+    <div style="margin-top:5px; font-size:9pt; color:#555;">
+      Artificial Intelligence &amp; Computing Programme — PIAIC Presidential Initiative (2023) &nbsp;|&nbsp;
+      PCAP: Programming Essentials in Python — Cisco / OpenEDG (2022)
+    </div>
+  </div>
+
+  <!-- PORTFOLIO HIGHLIGHT -->
+  <div style="background:#f0f5ff; border:1px solid #b0c4e8; border-radius:4px; padding:8px 14px; font-size:9.2pt; color:#1a3a6b; margin-top:2px;">
+    <strong>Portfolio &amp; Demos:</strong>
+    &nbsp;<a href="https://safdarayub-dev.vercel.app" style="color:#1a3a6b; font-weight:700;">safdarayub-dev.vercel.app</a>
+    &nbsp;|&nbsp; GitHub: <a href="https://github.com/safdarayubpk" style="color:#1a3a6b; font-weight:700;">github.com/safdarayubpk</a>
+    &nbsp;|&nbsp; All projects include live demos and GitHub repos — Campaign Manager directly demonstrates deposit optimization CRM workflows.
+  </div>
+
+</div>
+</body>
+</html>

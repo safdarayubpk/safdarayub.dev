@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safdar Ayub — Senior Agentic AI Engineer | 10Pearls</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Arial', sans-serif;
+      font-size: 10.5pt;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.45;
+    }
+    .page {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 14mm 18mm 12mm 18mm;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #1a3a6b;
+      padding-bottom: 9px;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-size: 22pt;
+      font-weight: 900;
+      color: #1a3a6b;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .header .subtitle {
+      font-size: 11pt;
+      color: #2c5aa0;
+      font-weight: 700;
+      margin-top: 3px;
+      letter-spacing: 0.5px;
+    }
+    .header .contact-line {
+      font-size: 9.5pt;
+      color: #444;
+      margin-top: 6px;
+    }
+    .header .contact-line a {
+      color: #1a3a6b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .header .contact-line span {
+      margin: 0 7px;
+      color: #aaa;
+    }
+
+    /* SECTION HEADINGS */
+    .section { margin-bottom: 11px; }
+    .section-title {
+      font-size: 10pt;
+      font-weight: 900;
+      color: #fff;
+      background: #1a3a6b;
+      padding: 3px 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    /* SUMMARY */
+    .summary p {
+      font-size: 10pt;
+      color: #222;
+      text-align: justify;
+      line-height: 1.55;
+    }
+
+    /* SKILLS TABLE */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+    }
+    .skills-table td {
+      padding: 3px 8px;
+      vertical-align: top;
+      border-bottom: 1px solid #eef2fa;
+    }
+    .skills-table td:first-child {
+      font-weight: 800;
+      color: #1a3a6b;
+      width: 26%;
+      white-space: nowrap;
+    }
+    .skills-table tr:nth-child(even) td { background: #f7f9fd; }
+
+    /* PROJECTS */
+    .project { margin-bottom: 10px; }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3px;
+    }
+    .project-title {
+      font-size: 10.5pt;
+      font-weight: 800;
+      color: #1a3a6b;
+    }
+    .project-links { font-size: 8.8pt; }
+    .project-links a {
+      color: #2c5aa0;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .project-tag-line {
+      font-size: 9.2pt;
+      color: #555;
+      margin-bottom: 4px;
+      font-style: italic;
+    }
+    .project ul { padding-left: 15px; }
+    .project ul li {
+      font-size: 9.5pt;
+      color: #222;
+      margin-bottom: 2px;
+      line-height: 1.45;
+    }
+    .tech-stack {
+      font-size: 8.8pt;
+      color: #555;
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .tech-stack strong { color: #333; font-style: normal; }
+    .badge {
+      display: inline-block;
+      background: #e8f0fb;
+      color: #1a3a6b;
+      font-size: 8pt;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-right: 4px;
+      border: 1px solid #b0c4e8;
+    }
+
+    /* EXPERIENCE */
+    .job { margin-bottom: 9px; }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .job-title {
+      font-size: 10.5pt;
+      font-weight: 800;
+      color: #1a3a6b;
+    }
+    .job-org { font-size: 9.8pt; font-weight: 600; color: #333; }
+    .job-period {
+      font-size: 9pt;
+      color: #555;
+      font-style: italic;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .job ul { margin-top: 4px; padding-left: 15px; }
+    .job ul li {
+      font-size: 9.5pt;
+      color: #222;
+      margin-bottom: 2px;
+      line-height: 1.45;
+    }
+
+    /* EDUCATION */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+      font-size: 9.5pt;
+    }
+    .edu-degree { font-weight: 700; color: #1a3a6b; }
+    .edu-year { color: #888; font-style: italic; white-space: nowrap; }
+    .edu-inst { color: #555; }
+
+    hr {
+      border: none;
+      border-top: 1px solid #d0daea;
+      margin: 5px 0 7px 0;
+    }
+
+    @media print {
+      body { background: #fff; }
+      @page { margin: 0; size: A4; }
+      .page { padding: 12mm 16mm 10mm 16mm; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Safdar Ayub</h1>
+    <div class="subtitle">Agentic AI Engineer &nbsp;|&nbsp; LLM Systems Developer &nbsp;|&nbsp; MCP &amp; RAG Specialist</div>
+    <div class="contact-line">
+      safdarayub@gmail.com
+      <span>|</span>
+      +92-332-961-1639
+      <span>|</span>
+      Pakistan
+      <span>|</span>
+      <a href="https://safdarayub-dev.vercel.app">safdarayub-dev.vercel.app</a>
+      <span>|</span>
+      <a href="https://linkedin.com/in/safdar-ayub-a9884694">LinkedIn</a>
+      <span>|</span>
+      <a href="https://github.com/safdarayubpk">GitHub</a>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section summary">
+    <div class="section-title">Professional Summary</div>
+    <p>
+      Agentic AI Engineer with hands-on experience designing and deploying production-grade autonomous agent systems powered by
+      <strong>OpenAI Agents SDK, Claude Code (Opus), and MCP Protocol</strong>. Built a Hackathon Platinum-tier AI agent
+      with <strong>4 custom MCP servers, event-driven triggers, circuit breaker patterns, and human-in-the-loop approval gates</strong> —
+      monitoring Gmail, filesystem, WhatsApp, and Odoo ERP. Implemented <strong>RAG pipelines</strong> using Qdrant Cloud vector database
+      and OpenAI embeddings. Proficient in <strong>Python, FastAPI, prompt engineering, LLM orchestration, and REST API</strong>
+      integration. Brings military-grade discipline — 23+ years ensuring zero-defect, mission-critical systems — to AI reliability
+      and production deployment.
+    </p>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <table class="skills-table">
+      <tr>
+        <td>Agentic AI Frameworks</td>
+        <td>OpenAI Agents SDK, MCP SDK, FastMCP (4 custom servers), Claude Code (Opus) — preferred over LangChain for production reliability and type safety</td>
+      </tr>
+      <tr>
+        <td>LLM Integration</td>
+        <td>OpenAI APIs, Claude API (Anthropic), Groq API, Gemini TTS — prompt engineering, chaining strategies, tool use, structured outputs</td>
+      </tr>
+      <tr>
+        <td>RAG &amp; Vector DBs</td>
+        <td>Qdrant Cloud, RAG pipeline design, semantic search, document chunking, embedding strategies — analogous to Pinecone/Weaviate</td>
+      </tr>
+      <tr>
+        <td>AI Workflow Design</td>
+        <td>Priority-queue orchestration, human-in-the-loop gates, event-driven triggers, circuit breaker patterns, risk-based routing</td>
+      </tr>
+      <tr>
+        <td>Backend &amp; APIs</td>
+        <td>Python, FastAPI, Node.js, REST APIs, Webhooks, APScheduler, PM2 process management, Playwright automation</td>
+      </tr>
+      <tr>
+        <td>Databases</td>
+        <td>PostgreSQL (Neon), SQLite, Turso/LibSQL, Prisma, SQLModel, Qdrant Cloud, Upstash Redis, Supabase</td>
+      </tr>
+      <tr>
+        <td>Frontend &amp; Full Stack</td>
+        <td>Next.js 16, React, TypeScript, Tailwind CSS, ShadCN UI, Recharts, Zustand</td>
+      </tr>
+      <tr>
+        <td>Cloud &amp; DevOps</td>
+        <td>Docker, Kubernetes, Helm Charts, OCI/OKE (Oracle Cloud), NGINX Ingress, Dapr, Apache Kafka, GitHub Actions, Vercel</td>
+      </tr>
+      <tr>
+        <td>Auth &amp; Integrations</td>
+        <td>Gmail OAuth2, Google OAuth, NextAuth.js v5, Better Auth, JWT, Odoo RPC, Stripe, Resend, Cloudinary</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- KEY PROJECTS -->
+  <div class="section">
+    <div class="section-title">Key Projects</div>
+
+    <!-- Personal AI Employee -->
+    <div class="project">
+      <div class="project-header">
+        <div class="project-title">
+          Personal AI Employee — Autonomous Multi-Agent System
+          &nbsp;<span class="badge">HACKATHON PLATINUM</span>
+          &nbsp;<span class="badge">MOST RELEVANT</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/safdarayubpk/PersonalAIEmployee">GitHub</a>
+        </div>
+      </div>
+      <div class="project-tag-line">Production-grade autonomous agent system — event-driven, multi-tool, human-in-the-loop, 4 custom MCP servers</div>
+      <ul>
+        <li>Designed and built local-first AI agent monitoring <strong>Gmail, filesystem, and WhatsApp</strong> with <strong>priority-queue orchestration</strong> and human-in-the-loop approval gates for sensitive/critical actions</li>
+        <li>Implemented <strong>4 custom FastMCP servers</strong> (email, social media, Odoo ERP, documents) with <strong>circuit breaker patterns</strong> and correlation ID tracking — production-reliability patterns for autonomous systems</li>
+        <li>Designed <strong>risk-based action routing</strong> (routine / sensitive / critical) with dry-run defaults, ensuring safe autonomous operation without human oversight failures</li>
+        <li>Integrated <strong>Obsidian vault pipeline</strong> with 12 Claude Code skills for automated task processing and weekly CEO briefing generation — end-to-end AI workflow automation</li>
+        <li>Managed multi-process orchestration with <strong>PM2</strong> and <strong>APScheduler</strong> for production-grade reliability and scheduling</li>
+      </ul>
+      <div class="tech-stack"><strong>Stack:</strong> Python, FastMCP, Claude Code (Opus), OpenAI Agents SDK, Gmail OAuth2, Playwright, Odoo RPC, APScheduler, PM2</div>
+    </div>
+
+    <hr/>
+
+    <!-- Robotics Textbook -->
+    <div class="project">
+      <div class="project-header">
+        <div class="project-title">Physical AI &amp; Humanoid Robotics Interactive Textbook — RAG Chatbot</div>
+        <div class="project-links">
+          <a href="https://github.com/safdarayubpk/2.book">GitHub</a> &nbsp;|&nbsp;
+          <a href="https://2-book.vercel.app/">Live</a>
+        </div>
+      </div>
+      <div class="project-tag-line">Production RAG system — OpenAI Agents SDK + Qdrant vector database + FastAPI backend</div>
+      <ul>
+        <li>Built <strong>RAG chatbot</strong> using <strong>OpenAI Agents SDK</strong>, FastAPI, Neon Postgres, and <strong>Qdrant Cloud</strong> vector database — semantic search over 6-chapter curriculum content</li>
+        <li>Implemented document chunking, embedding pipeline, and semantic retrieval — full RAG architecture from ingestion to response</li>
+        <li>Integrated <strong>MCP SDK</strong> for tool-use extensions and user authentication (Better Auth) with role-based access</li>
+      </ul>
+      <div class="tech-stack"><strong>Stack:</strong> Docusaurus, React, FastAPI, OpenAI Agents SDK, MCP SDK, Neon DB, Qdrant Cloud, Better Auth, Vercel</div>
+    </div>
+
+    <hr/>
+
+    <!-- AI Video Generation -->
+    <div class="project">
+      <div class="project-header">
+        <div class="project-title">AI Video Generation Agent — End-to-End LLM Orchestration Pipeline</div>
+        <div class="project-links">
+          <a href="https://github.com/safdarayubpk">GitHub</a> &nbsp;|&nbsp;
+          <a href="https://youtube.com/@safdarayub">YouTube Demo</a>
+        </div>
+      </div>
+      <div class="project-tag-line">Multi-step LLM pipeline — prompt chaining, tool orchestration, TTS integration, video rendering</div>
+      <ul>
+        <li>Built AI pipeline that generates complete motion graphics videos from text prompts: <strong>script → storyboard → scenes → narration → rendered video</strong> — demonstrating advanced LLM chaining strategies</li>
+        <li>Used <strong>Claude Code (Opus) as LLM orchestrator</strong> with Remotion/React rendering engine and <strong>Gemini TTS</strong> for synchronized voiceover — multi-model AI workflow</li>
+        <li>Produced 4-minute 1080p explainer video with spring physics animations — validates AI system output quality end-to-end</li>
+      </ul>
+      <div class="tech-stack"><strong>Stack:</strong> TypeScript, React, Remotion, Claude Code (Opus), Gemini TTS, Spring Physics</div>
+    </div>
+
+    <hr/>
+
+    <!-- AI Todo -->
+    <div class="project">
+      <div class="project-header">
+        <div class="project-title">AI-Powered Todo Application — 8-Phase Cloud-Native Evolution</div>
+        <div class="project-links">
+          <a href="https://github.com/safdarayubpk">GitHub</a> &nbsp;|&nbsp;
+          <a href="https://safdarayub-dev.vercel.app">Live</a>
+        </div>
+      </div>
+      <ul>
+        <li>Integrated <strong>Groq API</strong> LLM for natural language task management with conversation history — production AI chatbot within a full-stack app</li>
+        <li>Evolved across 8 phases to <strong>Kubernetes on OCI OKE</strong> with Helm charts, Dapr sidecar injection, and Apache Kafka events — demonstrates AI system scalability and cloud deployment</li>
+      </ul>
+      <div class="tech-stack"><strong>Stack:</strong> Next.js, FastAPI, SQLModel, Groq API, Docker, Kubernetes, Helm 3, Dapr, Apache Kafka, OCI OKE</div>
+    </div>
+
+  </div>
+
+  <!-- PROFESSIONAL EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Quality Control Inspector &amp; Electronics Technician (Retired)</div>
+          <div class="job-org">Pakistan Air Force</div>
+        </div>
+        <div class="job-period">Feb 2000 – Mar 2023 &nbsp;(23 Years)</div>
+      </div>
+      <ul>
+        <li>Maintained mission-critical communication and avionics systems under strict operational SLAs — discipline directly applied to AI system reliability, monitoring, and zero-downtime standards</li>
+        <li>Led quality control inspection enforcing zero-defect standards — directly maps to AI output quality assurance and response monitoring</li>
+        <li>Managed cross-functional technical teams — mirrors collaboration with product, engineering, and data teams in AI delivery</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EDUCATION & CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Education &amp; Certifications</div>
+    <div class="edu-row">
+      <div>
+        <span class="edu-degree">Certified Agentic and Robotic AI Engineer</span>
+        <span class="edu-inst"> &nbsp;— PIAIC, Air University Islamabad</span>
+      </div>
+      <div class="edu-year">Expected 2026</div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <span class="edu-degree">Master of Computer Science (CGPA: 3.11)</span>
+        <span class="edu-inst"> &nbsp;— Virtual University of Pakistan</span>
+      </div>
+      <div class="edu-year">2012</div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <span class="edu-degree">DAE Radio Technology (71%)</span>
+        <span class="edu-inst"> &nbsp;— School of Electronics, PAF Korangi Creek</span>
+      </div>
+      <div class="edu-year">2003</div>
+    </div>
+    <div style="margin-top:5px; font-size:9pt; color:#555;">
+      Artificial Intelligence &amp; Computing Programme — PIAIC Presidential Initiative (2023) &nbsp;|&nbsp;
+      PCAP: Programming Essentials in Python — Cisco / OpenEDG (2022)
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div style="background:#f0f5ff; border:1px solid #b0c4e8; border-radius:4px; padding:8px 14px; font-size:9.2pt; color:#1a3a6b; margin-top:2px;">
+    <strong>Portfolio &amp; Demos:</strong>
+    &nbsp;<a href="https://safdarayub-dev.vercel.app" style="color:#1a3a6b; font-weight:700;">safdarayub-dev.vercel.app</a>
+    &nbsp;|&nbsp; GitHub: <a href="https://github.com/safdarayubpk" style="color:#1a3a6b; font-weight:700;">github.com/safdarayubpk</a>
+    &nbsp;|&nbsp; Personal AI Employee demonstrates production-grade agentic AI with MCP servers, circuit breakers, and multi-tool orchestration.
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Qatar AF Interview Preparation — Safdar Ayub</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Arial', sans-serif;
+      font-size: 10.5pt;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.5;
+    }
+    .page {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 16mm 18mm 14mm 18mm;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      background: #1a3a6b;
+      color: #fff;
+      padding: 14px 20px;
+      margin-bottom: 18px;
+      border-radius: 4px;
+    }
+    .header h1 {
+      font-size: 18pt;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .header .subtitle {
+      font-size: 10.5pt;
+      color: #b0c8f0;
+      margin-top: 4px;
+    }
+    .header .meta {
+      font-size: 9pt;
+      color: #8aabd4;
+      margin-top: 3px;
+    }
+
+    /* SECTION */
+    .section {
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: 900;
+      color: #fff;
+      background: #1a3a6b;
+      padding: 5px 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      border-radius: 2px;
+    }
+    .phase-title {
+      font-size: 11pt;
+      font-weight: 900;
+      color: #1a3a6b;
+      background: #e8f0fb;
+      padding: 6px 12px;
+      border-left: 4px solid #1a3a6b;
+      margin-bottom: 12px;
+      margin-top: 6px;
+    }
+
+    /* SELLING POINTS TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+      margin-bottom: 6px;
+    }
+    table th {
+      background: #1a3a6b;
+      color: #fff;
+      padding: 5px 10px;
+      text-align: left;
+      font-weight: 700;
+    }
+    table td {
+      padding: 5px 10px;
+      border: 1px solid #d0ddf0;
+      vertical-align: top;
+    }
+    table tr:nth-child(even) td {
+      background: #f4f7fd;
+    }
+    table .check {
+      color: #1a6b3a;
+      font-weight: 700;
+    }
+
+    /* QA BLOCKS */
+    .qa-block {
+      margin-bottom: 14px;
+      border: 1px solid #d0ddf0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .question {
+      background: #1a3a6b;
+      color: #fff;
+      padding: 7px 12px;
+      font-size: 10pt;
+      font-weight: 700;
+    }
+    .question span {
+      color: #b0c8f0;
+      font-size: 9pt;
+      font-weight: 400;
+      margin-right: 6px;
+    }
+    .answer {
+      background: #f9fbff;
+      padding: 10px 14px;
+      font-size: 9.8pt;
+      color: #1a1a1a;
+      line-height: 1.6;
+      font-style: italic;
+      border-left: 3px solid #3b82f6;
+    }
+    .answer strong {
+      font-style: normal;
+      color: #1a3a6b;
+    }
+
+    /* TIPS */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .tips-box {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .tips-box .tips-header {
+      padding: 5px 12px;
+      font-weight: 700;
+      font-size: 9.5pt;
+      color: #fff;
+    }
+    .tips-box.do .tips-header { background: #1a6b3a; }
+    .tips-box.dont .tips-header { background: #8b1a1a; }
+    .tips-box ul {
+      padding: 8px 14px 8px 26px;
+      border: 1px solid #d0ddf0;
+      border-top: none;
+    }
+    .tips-box ul li {
+      font-size: 9.3pt;
+      margin-bottom: 4px;
+      color: #222;
+    }
+
+    /* DOCUMENTS */
+    .doc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 10px;
+      border-bottom: 1px solid #e8eef8;
+      font-size: 9.5pt;
+    }
+    .doc-item:nth-child(even) { background: #f4f7fd; }
+    .doc-ready { color: #1a6b3a; font-weight: 700; }
+    .doc-action { color: #8b4500; font-weight: 700; }
+
+    /* QUESTIONS TO ASK */
+    .ask-item {
+      padding: 7px 12px;
+      border-left: 3px solid #1a3a6b;
+      background: #f4f7fd;
+      margin-bottom: 6px;
+      font-size: 9.8pt;
+      font-style: italic;
+      color: #222;
+    }
+
+    /* SELLING POINTS */
+    .sp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .sp-item {
+      background: #f4f7fd;
+      border: 1px solid #d0ddf0;
+      border-left: 3px solid #1a3a6b;
+      padding: 6px 10px;
+      border-radius: 3px;
+      font-size: 9.3pt;
+    }
+    .sp-item .sp-point { font-weight: 700; color: #1a3a6b; }
+    .sp-item .sp-evidence { color: #444; font-size: 8.8pt; }
+
+    /* PRACTICE BOX */
+    .practice-box {
+      background: #fff8e8;
+      border: 2px solid #d4a800;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      font-size: 9.5pt;
+    }
+    .practice-box .pb-title {
+      font-weight: 900;
+      color: #8b6000;
+      margin-bottom: 5px;
+      font-size: 10pt;
+    }
+
+    /* PAGE BREAK */
+    .page-break { page-break-before: always; }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      font-size: 8pt;
+      color: #999;
+      margin-top: 16px;
+      padding-top: 8px;
+      border-top: 1px solid #d0ddf0;
+    }
+
+    @media print {
+      @page { margin: 0; size: A4; }
+      body { margin: 0; }
+      .page { padding: 13mm 16mm 11mm 16mm; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Qatar Air Force — Interview Preparation Guide</h1>
+    <div class="subtitle">Safdar Ayub &nbsp;|&nbsp; Assistant Warrant Officer (Retired) &nbsp;|&nbsp; RO FITT (G) — AVCS / Radio Ground</div>
+    <div class="meta">PAK No: 865942 &nbsp;|&nbsp; 23 Years PAF Service &nbsp;|&nbsp; Trade Proficiency: SUPERIOR &nbsp;|&nbsp; Medical: GC-1 (FITT)</div>
+  </div>
+
+  <!-- SELLING POINTS -->
+  <div class="section">
+    <div class="section-title">Your Strongest Selling Points — Memorize These</div>
+    <div class="sp-grid">
+      <div class="sp-item">
+        <div class="sp-point">All 3 Experience Levels</div>
+        <div class="sp-evidence">Flight Line + 2nd Line + QC Sqn — exact match to requirement</div>
+      </div>
+      <div class="sp-item">
+        <div class="sp-point">AWACS Ground Entry Station</div>
+        <div class="sp-evidence">No. 850 Readiness Flt — AWACS data relay to Air Command Sectors</div>
+      </div>
+      <div class="sp-item">
+        <div class="sp-point">Air Defence Radar Operations</div>
+        <div class="sp-evidence">TPS-43G at Samungli — live mission support to Air Defence Controllers</div>
+      </div>
+      <div class="sp-item">
+        <div class="sp-point">ATC Radio Communications</div>
+        <div class="sp-evidence">Kohat Radio Room — direct ATC communication support</div>
+      </div>
+      <div class="sp-item">
+        <div class="sp-point">Avionics Quality Control</div>
+        <div class="sp-evidence">PAF Faisal 107 AED — pre/post avionics inspection, 4Y 11M</div>
+      </div>
+      <div class="sp-item">
+        <div class="sp-point">SUPERIOR Trade Rating + 5 Medals</div>
+        <div class="sp-evidence">Official PAF assessment + Tamgha-E-Azm, Tamgha-E-Istaqlal</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRACTICE TIP -->
+  <div class="practice-box">
+    <div class="pb-title">How to Use This Guide</div>
+    Read each question aloud. Then cover the answer and try to say it in your own words. Practice daily for 20–30 minutes.
+    The goal is NOT to memorize word for word — the goal is to know the key points so you can speak naturally and confidently.
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="section">
+    <div class="phase-title">PHASE 1 — Phone Screening Questions</div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q1</span> Tell me about yourself.</div>
+      <div class="answer">
+        "I am Safdar Ayub, retired Assistant Warrant Officer from Pakistan Air Force with <strong>23 years of service</strong>
+        in the Radio Ground trade — RO FITT G. My experience covers all three operational levels —
+        <strong>Flight Line, 2nd Line engineering support, and Quality Control Squadron</strong>. I worked on
+        AWACS Ground Entry Stations, ATC radio rooms, air defence radar systems, and avionics quality control.
+        I was rated <strong>SUPERIOR in trade proficiency</strong> by PAF and hold 5 service medals including
+        Tamgha-E-Azm. I am 45 years old, medically GC-1 fit, and ready to serve."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q2</span> Why do you want to join Qatar Air Force?</div>
+      <div class="answer">
+        "Qatar Air Force operates advanced modern aircraft and systems. My experience in AVCS and radio ground systems,
+        quality control, and military aviation standards makes me <strong>directly applicable to QAF operations</strong>.
+        I want to continue contributing to military aviation in a professional environment that matches my expertise
+        and 23 years of experience."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q3</span> How many years of experience do you have?</div>
+      <div class="answer">
+        "I have <strong>23 years of total PAF service</strong> from February 2000 to March 2023. Of that,
+        <strong>20 years were specifically in my trade</strong> — RO FITT G — covering flight line, engineering wing,
+        inspection, and quality control roles at multiple PAF bases including Samungli, Kohat, PAF Farid,
+        Nur Khan, and PAF Faisal."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q4</span> Why did you leave PAF?</div>
+      <div class="answer">
+        "I completed 23 years of full service and was <strong>transferred to pension establishment on 21 March 2023</strong>
+        — which is an honourable retirement after completing full service tenure. I left with SUPERIOR trade
+        proficiency rating and five service medals."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q5</span> Are you willing to relocate to Qatar?</div>
+      <div class="answer">
+        "Yes, absolutely. I am <strong>fully prepared to relocate to Qatar</strong>. I am committed to this
+        opportunity and ready to serve."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q6</span> What is your medical status?</div>
+      <div class="answer">
+        "At the time of my retirement from PAF, my medical category was <strong>GC-1 FITT</strong> —
+        which means fully medically fit. I am in good health and ready for active duty."
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PHASE 2 -->
+  <div class="section">
+    <div class="phase-title">PHASE 2 — Technical Questions</div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q7</span> What is your trade and what does it involve?</div>
+      <div class="answer">
+        "My trade is <strong>RO FITT G — Radio Officer Fitter Ground</strong>. It involves operation, maintenance,
+        inspection, installation, and repair of ground-based radio communication systems, navigation aids,
+        and avionics ground support equipment used in support of military aviation operations."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q8</span> Explain your Flight Line experience.</div>
+      <div class="answer">
+        "At <strong>No. 850 Readiness Flight, PAF Base Farid</strong>, I operated the Ground Entry Station
+        supporting AWACS operations. When the Swedish AWACS aircraft took off, its radar data was downlinked
+        to our GES. I maintained the full data relay chain — <strong>M3SR Radios, Ground Entry Module,
+        Cisco Catalyst Switch 3560, Digital Timing System, LMR Router, and VHF Filter</strong> — and ensured
+        this data was forwarded in real time to the designated Air Command and Control Sectors."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q9</span> What is a Ground Entry Station (GES)?</div>
+      <div class="answer">
+        "A Ground Entry Station is a <strong>ground-based facility that receives downlinked data from airborne
+        surveillance platforms like AWACS</strong>. It processes and relays radar picture and intelligence data
+        to air command and control sectors, allowing ground commanders to have real-time air picture from the
+        airborne radar. I operated and maintained all communication equipment within the GES."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q10</span> What is AWACS and what was your role with it?</div>
+      <div class="answer">
+        "AWACS stands for <strong>Airborne Warning and Control System</strong>. It is an airborne radar platform
+        that provides 360-degree air surveillance. In PAF we operated Swedish AWACS aircraft. My role was on
+        the ground — at the Ground Entry Station — where I <strong>received the downlinked radar data from the
+        aircraft, maintained all equipment in the data link chain</strong>, and ensured continuous relay of
+        information to Air Command Sectors."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q11</span> Describe your Quality Control experience.</div>
+      <div class="answer">
+        "At <strong>PAF Base Faisal, No. 107 AED Quality Control Squadron</strong>, I performed pre and post
+        maintenance quality control inspection of all avionics equipment. I supervised avionics technicians,
+        evaluated defect trends, initiated corrective actions, maintained technical documentation, and liaised
+        with flight operations on equipment serviceability. I was rated <strong>SUPERIOR in trade proficiency</strong>
+        and served as technical supervisor for the QC team for nearly 5 years."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q12</span> What communication systems have you worked on?</div>
+      <div class="answer">
+        "Throughout my 23 years I worked on <strong>VHF and UHF radio systems, M3SR tactical radios,
+        Voice Logging Systems, PDH and SDH optic fiber systems, Defcomm digital switches and exchanges,
+        PABX telephone exchanges including Hicomm 330H, Public Address Systems, LMR routers, VHF filters,
+        Ground Entry Modules, and Digital Timing Systems</strong>. I also hold CCNA certification
+        with 92% score covering network infrastructure."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q13</span> Have you worked with ATC communications?</div>
+      <div class="answer">
+        "Yes. At <strong>PAF Base Kohat Engineering Wing</strong>, I served in the Radio Room providing
+        full communication support to Air Traffic Controllers. I maintained all VHF and UHF radio systems
+        used by ATC, Voice Logging System, and supporting infrastructure ensuring <strong>safe aircraft
+        operations</strong> at the base."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q14</span> Tell me about the TPS-43G radar.</div>
+      <div class="answer">
+        "The TPS-43G is an <strong>American long-range air defence radar</strong>. At PAF Base Samungli
+        No. 400 Squadron, the radar data fed into our Radio Room. I maintained the radio communication
+        systems in that room and provided <strong>direct communication support to Air Defence Controllers
+        during live operational missions</strong> of flying squadrons, ensuring uninterrupted real-time support."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q15</span> What is your 2nd Line experience?</div>
+      <div class="answer">
+        "I have two postings of 2nd line experience. At <strong>PAF Base Kohat Engineering Wing (4 years)</strong>,
+        I maintained base-wide communication infrastructure including radio systems, SDH backbone, and Defcomm
+        digital exchange. At <strong>PAF Base Nur Khan No. 103 ALC Inspection Section (4 years 5 months)</strong>,
+        I conducted comprehensive quality inspection of all types of air and ground equipment at the Air
+        Logistics Centre, prepared defect trend reports, and coordinated rectification with technical teams."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q16</span> What awards did you receive in PAF?</div>
+      <div class="answer">
+        "I received <strong>five awards</strong> during my service — <strong>Tamgha-E-Azm</strong> (Commendation Medal),
+        <strong>Tamgha-E-Istaqlal</strong> (Independence Medal), 20 Years Service Medal, 10 Years Service Medal,
+        and Pakistan Independence Day Diamond Jubilee Medal."
+      </div>
+    </div>
+
+    <div class="qa-block">
+      <div class="question"><span>Q17</span> Do you have NOC from PAF?</div>
+      <div class="answer">
+        "Yes. My discharge was through the <strong>official transfer to pension establishment process</strong>.
+        I can provide all required documentation including my PAF Certificate of Service Form P-14A."
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PHASE 3 — Questions to Ask -->
+  <div class="section">
+    <div class="phase-title">PHASE 3 — Questions YOU Should Ask Them</div>
+    <p style="font-size:9.3pt; color:#555; margin-bottom:8px;">Always ask 2–3 questions at the end. This shows professionalism and genuine interest.</p>
+
+    <div class="ask-item">"What aircraft types and communication systems does Qatar Air Force currently operate that I would be supporting?"</div>
+    <div class="ask-item">"What is the contract duration and what are the terms for renewal?"</div>
+    <div class="ask-item">"What documentation is required from Pakistani retired PAF personnel for the application process?"</div>
+    <div class="ask-item">"Will there be a technical assessment or medical examination before final selection?"</div>
+  </div>
+
+  <!-- PHASE 4 — Documents -->
+  <div class="section">
+    <div class="phase-title">PHASE 4 — Documents to Keep Ready</div>
+
+    <div class="doc-item">
+      <span>Qatar AF Tailored CV (Safdar_Ayub_Qatar_AF_Resume.pdf)</span>
+      <span class="doc-ready">Ready ✓</span>
+    </div>
+    <div class="doc-item">
+      <span>PAF Certificate of Service — Form P-14A (photos)</span>
+      <span class="doc-ready">Ready ✓</span>
+    </div>
+    <div class="doc-item">
+      <span>CNIC (National Identity Card)</span>
+      <span class="doc-ready">Ready ✓</span>
+    </div>
+    <div class="doc-item">
+      <span>Passport — check validity (minimum 6 months required)</span>
+      <span class="doc-action">Check Today !</span>
+    </div>
+    <div class="doc-item">
+      <span>DAE Radio Technology Certificate</span>
+      <span class="doc-action">Gather Now</span>
+    </div>
+    <div class="doc-item">
+      <span>MSc Computer Science Degree Certificate</span>
+      <span class="doc-action">Gather Now</span>
+    </div>
+    <div class="doc-item">
+      <span>CCNA Certificate</span>
+      <span class="doc-action">Gather Now</span>
+    </div>
+    <div class="doc-item">
+      <span>PAF Course Completion Certificates</span>
+      <span class="doc-action">Gather Now</span>
+    </div>
+    <div class="doc-item">
+      <span>Passport-size photographs (recent)</span>
+      <span class="doc-action">Prepare</span>
+    </div>
+  </div>
+
+  <!-- PHASE 5 — Do's and Don'ts -->
+  <div class="section">
+    <div class="phase-title">PHASE 5 — Interview Do's and Don'ts</div>
+    <div class="tips-grid">
+      <div class="tips-box do">
+        <div class="tips-header">DO</div>
+        <ul>
+          <li>Speak slowly and clearly</li>
+          <li>Use military terminology confidently</li>
+          <li>Mention SUPERIOR rating naturally</li>
+          <li>Say "Sir" when addressing an officer</li>
+          <li>Pause and think before answering</li>
+          <li>Be honest about your experience</li>
+          <li>Sit straight — military posture</li>
+          <li>Ask questions at the end</li>
+        </ul>
+      </div>
+      <div class="tips-box dont">
+        <div class="tips-header">DON'T</div>
+        <ul>
+          <li>Rush your answers</li>
+          <li>Over-explain or ramble</li>
+          <li>Sound boastful or overconfident</li>
+          <li>Use informal or casual language</li>
+          <li>Say "I don't know" — say "I will confirm"</li>
+          <li>Exaggerate or claim false experience</li>
+          <li>Interrupt the interviewer</li>
+          <li>Forget to mention your 5 medals</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY PRACTICE PLAN -->
+  <div class="section">
+    <div class="phase-title">Daily Practice Plan</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Focus Area</th>
+          <th>Questions to Practice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Day 1</strong></td>
+          <td>Introduction & Background</td>
+          <td>Q1, Q2, Q3, Q4, Q5, Q6</td>
+        </tr>
+        <tr>
+          <td><strong>Day 2</strong></td>
+          <td>AWACS & Flight Line</td>
+          <td>Q8, Q9, Q10</td>
+        </tr>
+        <tr>
+          <td><strong>Day 3</strong></td>
+          <td>QC & Technical Systems</td>
+          <td>Q11, Q12, Q13, Q14</td>
+        </tr>
+        <tr>
+          <td><strong>Day 4</strong></td>
+          <td>2nd Line & Awards</td>
+          <td>Q7, Q15, Q16, Q17</td>
+        </tr>
+        <tr>
+          <td><strong>Day 5</strong></td>
+          <td>Full Mock Interview</td>
+          <td>All questions — timed practice</td>
+        </tr>
+        <tr>
+          <td><strong>Daily</strong></td>
+          <td>Selling Points</td>
+          <td>Read the 6 selling points every morning</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- IMPORTANT REMINDER -->
+  <div class="practice-box" style="border-color:#1a3a6b; background:#e8f0fb;">
+    <div class="pb-title" style="color:#1a3a6b;">Most Important Reminder</div>
+    <strong>Check your passport validity today.</strong> Qatar jobs require at least 6 months validity.
+    If it is expired or near expiry, start renewal immediately — this can take weeks and will block
+    your hiring even if you are selected. Do not delay this.
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Prepared for Safdar Ayub — Qatar Air Force AVCS Technician Application &nbsp;|&nbsp;
+    PAK No: 865942 &nbsp;|&nbsp; RO FITT (G) &nbsp;|&nbsp; 23 Years PAF Service
+  </div>
+
+</div>
+</body>
+</html>

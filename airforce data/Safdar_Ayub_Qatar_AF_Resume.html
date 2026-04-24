@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safdar Ayub — Aviation Technician CV</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Arial', sans-serif;
+      font-size: 11pt;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.45;
+    }
+    .page {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 18mm 18mm 14mm 18mm;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #1a3a6b;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+    .header h1 {
+      font-size: 22pt;
+      font-weight: 900;
+      color: #1a3a6b;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .header .subtitle {
+      font-size: 11.5pt;
+      color: #2c5aa0;
+      font-weight: 700;
+      margin-top: 3px;
+      letter-spacing: 0.5px;
+    }
+    .header .contact-line {
+      font-size: 9.5pt;
+      color: #444;
+      margin-top: 6px;
+    }
+    .header .contact-line span {
+      margin: 0 8px;
+      color: #888;
+    }
+
+    /* SECTION HEADINGS */
+    .section {
+      margin-bottom: 13px;
+    }
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: 900;
+      color: #fff;
+      background: #1a3a6b;
+      padding: 4px 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    /* PROFESSIONAL SUMMARY */
+    .summary p {
+      font-size: 10.5pt;
+      color: #222;
+      text-align: justify;
+      line-height: 1.55;
+    }
+
+    /* COMPETENCIES GRID */
+    .competencies-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4px 16px;
+    }
+    .competency-item {
+      font-size: 9.8pt;
+      color: #1a1a1a;
+      padding: 2px 0;
+    }
+    .competency-item::before {
+      content: "✦ ";
+      color: #1a3a6b;
+      font-size: 8pt;
+    }
+
+    /* EXPERIENCE */
+    .job {
+      margin-bottom: 11px;
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .job-title {
+      font-size: 10.5pt;
+      font-weight: 800;
+      color: #1a3a6b;
+    }
+    .job-org {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #333;
+    }
+    .job-period {
+      font-size: 9.5pt;
+      color: #555;
+      font-style: italic;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .job-duration {
+      font-size: 9pt;
+      color: #888;
+      text-align: right;
+    }
+    .job-tag {
+      display: inline-block;
+      background: #e8f0fb;
+      color: #1a3a6b;
+      font-size: 8.5pt;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 3px;
+      margin-top: 2px;
+      border: 1px solid #b0c4e8;
+    }
+    .job ul {
+      margin-top: 5px;
+      padding-left: 16px;
+    }
+    .job ul li {
+      font-size: 9.8pt;
+      color: #222;
+      margin-bottom: 3px;
+      line-height: 1.45;
+    }
+    .equipment-line {
+      font-size: 9.2pt;
+      color: #555;
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .equipment-line strong {
+      color: #333;
+      font-style: normal;
+    }
+
+    /* COURSES TABLE */
+    .courses-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.2pt;
+    }
+    .courses-table th {
+      background: #e8f0fb;
+      color: #1a3a6b;
+      font-weight: 700;
+      padding: 5px 8px;
+      text-align: left;
+      border: 1px solid #c5d5ee;
+    }
+    .courses-table td {
+      padding: 4px 8px;
+      border: 1px solid #dde6f5;
+      color: #222;
+      vertical-align: top;
+    }
+    .courses-table tr:nth-child(even) td {
+      background: #f5f8fd;
+    }
+    .pass-mark {
+      color: #1a6b3a;
+      font-weight: 700;
+    }
+
+    /* AWARDS */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 20px;
+    }
+    .award-item {
+      font-size: 9.8pt;
+      color: #1a1a1a;
+      padding: 2px 0;
+    }
+    .award-item::before {
+      content: "★ ";
+      color: #b8860b;
+    }
+
+    /* EDUCATION */
+    .edu-item {
+      margin-bottom: 6px;
+    }
+    .edu-degree {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #1a3a6b;
+    }
+    .edu-institution {
+      font-size: 9.5pt;
+      color: #444;
+    }
+    .edu-year {
+      font-size: 9pt;
+      color: #888;
+      font-style: italic;
+    }
+
+    /* PAF RATING BOX */
+    .rating-box {
+      display: flex;
+      gap: 16px;
+      margin-top: 6px;
+    }
+    .rating-item {
+      background: #f0f5ff;
+      border: 1px solid #b0c4e8;
+      border-radius: 4px;
+      padding: 5px 14px;
+      text-align: center;
+    }
+    .rating-label {
+      font-size: 8pt;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .rating-value {
+      font-size: 11pt;
+      font-weight: 900;
+      color: #1a3a6b;
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid #c5d5ee;
+      margin: 5px 0 8px 0;
+    }
+
+    /* TWO COLUMN LAYOUT */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { padding: 12mm 15mm; }
+      @page {
+        margin: 0;
+        size: A4;
+      }
+      body {
+        margin: 0;
+      }
+      .page {
+        padding: 14mm 16mm 12mm 16mm;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Safdar Ayub</h1>
+    <div class="subtitle">Aviation Technician &nbsp;|&nbsp; AVCS / Radio Ground (RO FITT G) &nbsp;|&nbsp; Quality Control Inspector</div>
+    <div class="contact-line">
+      safdarayub@gmail.com
+      <span>|</span>
+      +92-332-961-1639
+      <span>|</span>
+      Gumbat, Kohat, KPK — Pakistan
+      <span>|</span>
+      Date of Birth: 05 April 1981 &nbsp;(Age 45)
+    </div>
+    <div class="contact-line" style="margin-top:4px; color:#555;">
+      PAK No: <strong>865942</strong>
+      &nbsp;|&nbsp; Rank: <strong>Assistant Warrant Officer</strong>
+      &nbsp;|&nbsp; Trade: <strong>RO FITT (G)</strong>
+      &nbsp;|&nbsp; Medical: <strong>GC-1 (FITT)</strong>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section summary">
+    <div class="section-title">Professional Summary</div>
+    <p>
+      Retired Pakistan Air Force Aviation Technician with <strong>23 years of distinguished service</strong> (Feb 2000 – Mar 2023)
+      in the AVCS / Radio Ground trade (RO FITT G). Extensive hands-on experience across all three operational levels —
+      <strong>Flight Line</strong> (Ground Entry Station), <strong>2nd Line</strong> (Engineering Wing &amp; Air Logistics Inspection),
+      and <strong>Quality Control Squadron</strong> — covering VHF/UHF radio systems, avionics navigation aids, digital communication
+      systems, and military-grade ground support equipment. Rated <strong>SUPERIOR</strong> in Trade Proficiency by PAF.
+      Medically fit (GC-1). Officially recommended by commanding officers as a technical expert in radio/navigation aid systems,
+      quality control inspector, and technical supervisor. Ready to deploy expertise in support of Qatar Air Force operations.
+    </p>
+  </div>
+
+  <!-- CORE COMPETENCIES -->
+  <div class="section">
+    <div class="section-title">Core Competencies</div>
+    <div class="competencies-grid">
+      <div class="competency-item">VHF / UHF Radio Systems</div>
+      <div class="competency-item">Flight Line Operations</div>
+      <div class="competency-item">Quality Control Inspection</div>
+      <div class="competency-item">Navigation Aid / Radio Maintenance</div>
+      <div class="competency-item">2nd Line Engineering Support</div>
+      <div class="competency-item">Avionics Equipment QC</div>
+      <div class="competency-item">Digital Communication Systems</div>
+      <div class="competency-item">Control Sqn Technical Supervision</div>
+      <div class="competency-item">AWACS Data Link &amp; GES Operations</div>
+      <div class="competency-item">ATC Radio Communication Support</div>
+      <div class="competency-item">Air Defence Radar (TPS-43G) Interface</div>
+      <div class="competency-item">PDH/SDH Optic Fiber Systems</div>
+      <div class="competency-item">Defcomm / PABX Systems</div>
+      <div class="competency-item">Military Leadership &amp; Supervision</div>
+      <div class="competency-item">Pre/Post Maintenance Inspection</div>
+      <div class="competency-item">Defect Trend Analysis</div>
+      <div class="competency-item">CISCO Network Infrastructure (92%)</div>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+
+    <!-- QC Sqn -->
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Quality Control Technical Supervisor &amp; Avionics Inspector</div>
+          <div class="job-org">PAF Base Faisal — No. 107 AED, Quality Control Squadron</div>
+          <div><span class="job-tag">CONTROL SQN</span> <span class="job-tag">AVIONICS QC</span></div>
+        </div>
+        <div>
+          <div class="job-period">Dec 2017 – Nov 2022</div>
+          <div class="job-duration">4 Years 11 Months</div>
+        </div>
+      </div>
+      <ul>
+        <li>Performed pre-maintenance and post-maintenance quality control inspection of all avionics equipment to military-grade standards</li>
+        <li>Provided technical supervision over avionics technicians ensuring serviceability and airworthiness compliance</li>
+        <li>Evaluated defect trends and initiated corrective actions to maintain operational readiness of avionic systems</li>
+        <li>Maintained inspection records and technical documentation in accordance with PAF engineering orders</li>
+        <li>Liaised with flight operations and engineering units on avionics equipment serviceability status</li>
+      </ul>
+    </div>
+
+    <!-- Nur Khan Inspection -->
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Quality Inspector — Air &amp; Ground Equipment</div>
+          <div class="job-org">PAF Base Nur Khan — No. 103 ALC, Inspection Section</div>
+          <div><span class="job-tag">2ND LINE</span> <span class="job-tag">INSPECTION / QC</span></div>
+        </div>
+        <div>
+          <div class="job-period">Aug 2013 – Dec 2017</div>
+          <div class="job-duration">4 Years 5 Months</div>
+        </div>
+      </div>
+      <ul>
+        <li>Conducted comprehensive quality inspection of all types of air and ground equipment at Air Logistics Centre</li>
+        <li>Assessed serviceability of communication and avionic systems against technical specifications and PAF standards</li>
+        <li>Prepared inspection reports and defect trend analysis to support engineering decision-making</li>
+        <li>Coordinated with technical teams to ensure timely rectification of faults and compliance with maintenance schedules</li>
+      </ul>
+    </div>
+
+    <!-- PAF Farid Flight Line -->
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Radio Technician — AWACS Ground Entry Station (Flight Line)</div>
+          <div class="job-org">No. 850 Readiness Flight, PAF Base Farid</div>
+          <div><span class="job-tag">FLIGHT LINE</span> <span class="job-tag">AWACS GROUND ENTRY STATION</span></div>
+        </div>
+        <div>
+          <div class="job-period">May 2010 – Aug 2013</div>
+          <div class="job-duration">3 Years 3 Months</div>
+        </div>
+      </div>
+      <ul>
+        <li>Operated Ground Entry Station (GES) receiving and processing real-time radar data downlinked from AWACS (Airborne Warning and Control System) Swedish aircraft and forwarding intelligence to designated Air Command and Control Sectors</li>
+        <li>Maintained M3SR Radios, LMR Router, VHF Filter, and Digital Timing System ensuring continuous and uninterrupted AWACS data link communications</li>
+        <li>Managed Cisco Catalyst Switch 3560 and Ground Entry Module forming the digital backbone of the AWACS data relay infrastructure</li>
+        <li>Ensured 24/7 serviceability of all GES systems critical to national air defence surveillance and command sector operations</li>
+      </ul>
+      <div class="equipment-line"><strong>Equipment:</strong> M3SR Radios, Cisco Catalyst Switch 3560, Ground Entry Module, Digital Timing System, LMR Router, VHF Filter</div>
+    </div>
+
+    <!-- PAF Kohat Engineering Wing -->
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Radio Technician — Engineering Wing &amp; ATC Radio Room</div>
+          <div class="job-org">PAF Base Kohat — Engineering Wing</div>
+          <div><span class="job-tag">2ND LINE</span> <span class="job-tag">ATC COMMUNICATIONS</span> <span class="job-tag">ENGINEERING SUPPORT</span></div>
+        </div>
+        <div>
+          <div class="job-period">Jun 2006 – May 2010</div>
+          <div class="job-duration">4 Years</div>
+        </div>
+      </div>
+      <ul>
+        <li>Served in the Radio Room providing full communication support to Air Traffic Controllers (ATC) for safe aircraft operations at PAF Base Kohat</li>
+        <li>Maintained and repaired VHF/UHF radio systems, Voice Logging System, and all ATC communication infrastructure</li>
+        <li>Operated Public Address System and PABX telephone exchange supporting base-wide communications</li>
+        <li>Managed SDH backbone and Defcomm OXE digital communication exchange serving the entire base engineering wing</li>
+      </ul>
+      <div class="equipment-line"><strong>Equipment:</strong> VHF/UHF Radios, Voice Logging System, VHF PAE 4004, Hicomm 330H PABX, SDH, Omni PCX M2 (Defcomm OXE Exchange), Public Address System</div>
+    </div>
+
+    <!-- PAF Samungli -->
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Radio Technician — Radar Radio Room &amp; Air Defence Communications</div>
+          <div class="job-org">PAF Base Samungli — No. 400 Squadron</div>
+          <div><span class="job-tag">OPERATIONAL UNIT</span> <span class="job-tag">AIR DEFENCE RADAR</span></div>
+        </div>
+        <div>
+          <div class="job-period">Apr 2003 – Jun 2006</div>
+          <div class="job-duration">3 Years 1 Month</div>
+        </div>
+      </div>
+      <ul>
+        <li>Operated Radio Room receiving data feeds from TPS-43G American air defence radar and routing processed information to air defence command and control network</li>
+        <li>Provided dedicated communication support to Air Defence Controllers during live operational missions of flying squadrons</li>
+        <li>Maintained VHF/UHF radio systems, Voice Recorders, and FM 200 communications ensuring uninterrupted support to operational flying missions</li>
+        <li>Ensured continuous serviceability of all radio room assets critical to real-time air defence operations</li>
+      </ul>
+      <div class="equipment-line"><strong>Equipment:</strong> TPS-43G Radar Interface, VHF/UHF Radios, Voice Recorders, Walkie Talkies, FM 200</div>
+    </div>
+
+    <!-- AHQ -->
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <div class="job-title">Technical Staff — Directorate of Network Communication</div>
+          <div class="job-org">Air Headquarters Islamabad — Dte of NWC</div>
+          <div><span class="job-tag">HQ STAFF</span></div>
+        </div>
+        <div>
+          <div class="job-period">Nov 2022 – Mar 2023</div>
+          <div class="job-duration">4 Months</div>
+        </div>
+      </div>
+      <ul>
+        <li>Managed NGN (Next Generation Network) operations and staff duties at Air Headquarters level</li>
+        <li>Supported budgetary management, forecasting, and resource allocation for network communication directorate</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- PAF RATING -->
+  <div class="section">
+    <div class="section-title">Official PAF Performance Assessment</div>
+    <div class="rating-box">
+      <div class="rating-item">
+        <div class="rating-label">Trade Proficiency</div>
+        <div class="rating-value">SUPERIOR</div>
+      </div>
+      <div class="rating-item">
+        <div class="rating-label">Character &amp; General Behaviour</div>
+        <div class="rating-value">GOOD</div>
+      </div>
+      <div class="rating-item">
+        <div class="rating-label">Medical Category</div>
+        <div class="rating-value">GC-1 (FITT)</div>
+      </div>
+      <div class="rating-item">
+        <div class="rating-label">Total Service</div>
+        <div class="rating-value">23 Years</div>
+      </div>
+    </div>
+    <p style="font-size:9.2pt; color:#444; margin-top:8px; font-style:italic; padding-left:2px;">
+      Official PAF Citation: <em>"Proficient radio trade technician/supervisor with vast experience in operation, maintenance, inspection
+      and installation of radio equipment. Technical expert for repair &amp; maintenance of navigation aid/radio systems. Highly skilled
+      quality control inspector proven at various air force bases and air headquarters."</em>
+    </p>
+  </div>
+
+  <!-- PROFESSIONAL TRAINING -->
+  <div class="section">
+    <div class="section-title">Professional Courses — Pakistan Air Force</div>
+    <table class="courses-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Course / Training</th>
+          <th>Period</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>CISCO Certified Network Associate (CCNA)</td>
+          <td>Jun 2022 – Jul 2022</td>
+          <td class="pass-mark">Pass — 92%</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>FMX Operation, Maintenance &amp; Administration</td>
+          <td>May 2022 – Jun 2022</td>
+          <td class="pass-mark">Pass</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Military Leadership &amp; Command (JCO)</td>
+          <td>Oct 2020</td>
+          <td class="pass-mark">Pass — 66.17%</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>CSEP Management</td>
+          <td>Mar 2020</td>
+          <td class="pass-mark">Pass — 80.65%</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Electromedical "D" Level Maintenance</td>
+          <td>Jul 2019 – Aug 2019</td>
+          <td class="pass-mark">Pass — 74%</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Quality Control Familiarization</td>
+          <td>Aug 2019</td>
+          <td class="pass-mark">Pass — 67.20%</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Maintenance Supervisory Course</td>
+          <td>Dec 2016 – Jan 2017</td>
+          <td class="pass-mark">Pass — 72.75%</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Defcomm Switches "O" Level</td>
+          <td>Mar 2016 – Apr 2016</td>
+          <td class="pass-mark">Pass — 80%</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Defcomm Power Management</td>
+          <td>Feb 2016</td>
+          <td class="pass-mark">Pass — 55%</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Digital Radio System OA&amp;M</td>
+          <td>Aug 2009</td>
+          <td class="pass-mark">Pass — 54%</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>PDH / SDH Optic Fiber System Maintenance</td>
+          <td>Aug 2006 – Sep 2006</td>
+          <td class="pass-mark">Pass — 72.80%</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Balloon Barrage System Course</td>
+          <td>Jan 2001</td>
+          <td class="pass-mark">Pass — 64%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TWO COLUMN: AWARDS + EDUCATION -->
+  <div class="two-col">
+
+    <!-- AWARDS -->
+    <div class="section">
+      <div class="section-title">Awards &amp; Medals</div>
+      <div>
+        <div class="award-item">Tamgha-E-Azm &nbsp;<span style="font-size:8.5pt;color:#555;">(Commendation Medal)</span></div>
+        <div class="award-item">Tamgha-E-Istaqlal &nbsp;<span style="font-size:8.5pt;color:#555;">(Independence Medal)</span></div>
+        <div class="award-item">20 Years Service Medal</div>
+        <div class="award-item">10 Years Service Medal</div>
+        <div class="award-item">Pakistan Independence Day Diamond Jubilee Medal</div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+      <div class="section-title">Education &amp; Qualifications</div>
+      <div class="edu-item">
+        <div class="edu-degree">Master of Computer Science (CGPA: 3.11)</div>
+        <div class="edu-institution">Virtual University of Pakistan</div>
+        <div class="edu-year">2012</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">DAE — Radio Technology (71%)</div>
+        <div class="edu-institution">School of Electronics, PAF Korangi Creek</div>
+        <div class="edu-year">2003</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">F.Sc (Pre-Engineering)</div>
+        <div class="edu-institution">Pakistan</div>
+      </div>
+      <div style="margin-top:6px; font-size:9pt; color:#555;">
+        PAF Qualifications: Qualifying Examination-I &amp; II, Maintenance Supervisory Course
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PERSONAL PARTICULARS -->
+  <div class="section">
+    <div class="section-title">Service Record Summary</div>
+    <table style="width:100%; font-size:9.2pt; border-collapse:collapse;">
+      <tr>
+        <td style="padding:3px 6px; width:22%; color:#555;">Service Number</td>
+        <td style="padding:3px 6px; width:28%; font-weight:700;">PAK / 865942</td>
+        <td style="padding:3px 6px; width:22%; color:#555;">Trade</td>
+        <td style="padding:3px 6px; font-weight:700;">RO FITT (G) — Avionics/Radio Ground</td>
+      </tr>
+      <tr style="background:#f5f8fd;">
+        <td style="padding:3px 6px; color:#555;">Enrolled</td>
+        <td style="padding:3px 6px; font-weight:700;">11 February 2000</td>
+        <td style="padding:3px 6px; color:#555;">Released</td>
+        <td style="padding:3px 6px; font-weight:700;">21 March 2023</td>
+      </tr>
+      <tr>
+        <td style="padding:3px 6px; color:#555;">Trade in Service</td>
+        <td style="padding:3px 6px; font-weight:700;">09 Jun 2003 – 21 Mar 2023</td>
+        <td style="padding:3px 6px; color:#555;">Domicile</td>
+        <td style="padding:3px 6px; font-weight:700;">KPK — Pakistan</td>
+      </tr>
+      <tr style="background:#f5f8fd;">
+        <td style="padding:3px 6px; color:#555;">Reason for Release</td>
+        <td style="padding:3px 6px; font-weight:700;" colspan="3">Transfer to Pension Establishment (Honourable Retirement)</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- POST-RETIREMENT DEVELOPMENT -->
+  <div class="section" style="margin-top:10px;">
+    <div class="section-title">Post-Retirement Professional Development</div>
+    <p style="font-size:9.5pt; color:#333; line-height:1.55;">
+      Following honourable retirement from PAF, continuously pursuing advanced technical education. Currently enrolled in
+      <strong>Certified Agentic &amp; Robotic AI Engineer programme</strong> at PIAIC, Air University Islamabad (2023–2026).
+      Developing expertise in AI systems, full-stack development, and cloud technologies — demonstrating continued
+      commitment to learning modern digital and networked systems directly applicable to aviation communication infrastructure.
+    </p>
+    <div style="margin-top:6px; font-size:9pt; color:#555;">
+      Portfolio: <span style="color:#1a3a6b; font-weight:600;">safdarayub-dev.vercel.app</span>
+      &nbsp;|&nbsp; GitHub: <span style="color:#1a3a6b; font-weight:600;">github.com/safdarayubpk</span>
+      &nbsp;|&nbsp; LinkedIn: <span style="color:#1a3a6b; font-weight:600;">linkedin.com/in/safdar-ayub-a9884694</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center; margin-top:12px; padding-top:8px; border-top:1px solid #c5d5ee; font-size:8.5pt; color:#888;">
+    All information verified from Pakistan Air Force Certificate of Service (PAF Form P-14A) — Service No. PAK/865942
+  </div>
+
+</div>
+</body>
+</html>
