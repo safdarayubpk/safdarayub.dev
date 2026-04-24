@@ -23,6 +23,6 @@ export const ahfAutoParts: Project = {
     live: "https://ahf-auto-parts.vercel.app",
   },
   isFlagship: true,
-  priority: 2,
+  priority: 3,
   lastUpdated: "2026-04-18",
 };
