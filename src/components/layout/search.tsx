@@ -41,6 +41,7 @@ export function Search({ items }: SearchProps) {
   const handleClose = useCallback(() => {
     setIsOpen(false);
     setQuery("");
+    document.getElementById("search-trigger")?.focus();
   }, []);
 
   useEffect(() => {
