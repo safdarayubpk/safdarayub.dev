@@ -73,6 +73,7 @@ export function Search({ items }: SearchProps) {
   return (
     <>
       <button
+        id="search-trigger"
         onClick={handleOpen}
         className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors px-3 py-1.5 rounded-md border border-border bg-background"
         aria-label="Search (Ctrl+K)"
@@ -88,9 +89,13 @@ export function Search({ items }: SearchProps) {
         <div
           className="fixed inset-0 z-50 flex items-start justify-center pt-[20vh]"
           onClick={handleClose}
+          role="presentation"
         >
           <div className="fixed inset-0 bg-background/80 backdrop-blur-sm" />
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Search"
             className="relative w-full max-w-lg mx-4 rounded-lg border bg-background shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
@@ -99,6 +104,8 @@ export function Search({ items }: SearchProps) {
               <input
                 ref={inputRef}
                 type="text"
+                role="searchbox"
+                aria-label="Search projects and blog posts"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search projects and blog posts..."
