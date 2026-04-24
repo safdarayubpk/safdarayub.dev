@@ -33,7 +33,7 @@ export function GitHubStats() {
           {stats.map((stat) => (
             <Card key={stat.label}>
               <CardContent className="pt-6 text-center">
-                <stat.icon className="h-5 w-5 text-primary mx-auto mb-2" />
+                <stat.icon className="h-5 w-5 text-primary mx-auto mb-2" aria-hidden="true" />
                 <div className="text-2xl font-bold">{stat.value}</div>
                 <div className="text-xs text-muted-foreground mt-1">
                   {stat.label}

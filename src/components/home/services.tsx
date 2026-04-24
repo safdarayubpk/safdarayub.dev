@@ -56,7 +56,7 @@ export function Services() {
             <Card key={service.title} className="h-full">
               <CardContent className="pt-6">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <service.icon className="h-6 w-6 text-primary" />
+                  <service.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">

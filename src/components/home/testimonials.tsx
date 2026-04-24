@@ -36,7 +36,7 @@ export function Testimonials() {
           {testimonials.map((testimonial) => (
             <Card key={testimonial.name} className="h-full">
               <CardContent className="pt-6 flex flex-col h-full">
-                <Quote className="h-6 w-6 text-primary/30 mb-3 flex-shrink-0" />
+                <Quote className="h-6 w-6 text-primary/30 mb-3 flex-shrink-0" aria-hidden="true" />
                 <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
