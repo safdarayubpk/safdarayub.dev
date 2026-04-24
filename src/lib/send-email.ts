@@ -16,7 +16,8 @@ export async function sendContactEmail({
   message,
 }: SendEmailParams) {
   const { error } = await resend.emails.send({
-    // TODO: Replace with verified domain sender when custom domain is configured
+    // When safdarayub.dev is verified in Resend, change this to:
+    // from: "Portfolio Contact <noreply@safdarayub.dev>"
     from: "Portfolio Contact <onboarding@resend.dev>",
     to: process.env.CONTACT_EMAIL || "safdarayub@gmail.com",
     replyTo: email,
