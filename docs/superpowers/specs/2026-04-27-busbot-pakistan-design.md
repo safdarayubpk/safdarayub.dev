@@ -98,6 +98,7 @@ User (Phone Browser)
 - To field
 - Estimated fare field
 - Submit button (جمع کریں)
+- Submitted routes are saved to browser localStorage for the demo (no backend required)
 
 ---
 
@@ -120,7 +121,7 @@ Instructions:
 
 ### Voice Input Flow
 1. User taps mic button
-2. Web Speech API records audio and converts to text (supports Urdu)
+2. Web Speech API records audio and converts to text (supports Urdu on Chrome for Android — the dominant browser for Pakistani mobile users)
 3. Text is sent to Gemini API along with city selection
 4. Gemini parses origin + destination even from casual/informal speech
 5. Gemini queries the route JSON and returns Urdu directions
