@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { socialLinks } from "@/config/site";
 
 const stats = [
-  { icon: BookOpen, value: "150+", label: "Repositories" },
+  { icon: BookOpen, value: "160+", label: "Repositories" },
   { icon: Star, value: "5", label: "Projects Shipped" },
   { icon: GitFork, value: "21+", label: "ADRs Written" },
   { icon: Code2, value: "4", label: "MCP Servers" },
@@ -25,7 +25,7 @@ export function GitHubStats() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <h2 className="text-3xl font-bold text-center mb-3">GitHub Activity</h2>
         <p className="text-muted-foreground text-center mb-10">
-          150+ repositories and counting
+          160+ repositories and counting
         </p>
 
         {/* Stats grid */}
