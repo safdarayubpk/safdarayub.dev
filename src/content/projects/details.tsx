@@ -448,6 +448,107 @@ export const projectDetails: Record<string, React.ReactNode> = {
     </>
   ),
 
+  "busbot-pakistan": (
+    <>
+      <h2>Overview</h2>
+      <p>
+        Pakistan&apos;s first AI-powered public bus guide. Millions of daily
+        commuters in Lahore, Karachi, and Islamabad rely on buses with no
+        reliable digital map — route information is shared by word of mouth, and
+        most apps are English-only. BusBot Pakistan solves this by letting users
+        speak their origin and destination in Urdu and receive a conversational
+        route response in the same language.
+      </p>
+      <p>
+        Built in one day for the <strong>AI Seekho 2026</strong> competition
+        (Google + Government of Pakistan, App Banao track) using Google AI
+        Studio Vibe Coding. Deployed on Google Cloud Run with a fully RTL Urdu
+        interface and Pakistan Green theme.
+      </p>
+
+      <h2>How It Works</h2>
+      <div className="not-prose overflow-x-auto">
+        <table className="w-full text-sm border border-border rounded-lg">
+          <thead>
+            <tr className="bg-muted">
+              <th className="px-4 py-2 text-left font-semibold">Step</th>
+              <th className="px-4 py-2 text-left font-semibold">What Happens</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">1. Input</td>
+              <td className="px-4 py-2">User speaks or types a route query in Urdu (e.g. &ldquo;Johar Town se Liberty kaise jaun?&rdquo;)</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">2. Voice</td>
+              <td className="px-4 py-2">Web Speech API transcribes Urdu speech to text natively in Chrome/Android</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">3. AI Processing</td>
+              <td className="px-4 py-2">Gemini 3 Flash Preview receives query + city context + pre-seeded route database</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">4. Reasoning</td>
+              <td className="px-4 py-2">AI identifies origin/destination, matches stops, and formats a friendly Urdu reply</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">5. Output</td>
+              <td className="px-4 py-2">Bus number, boarding/alighting stops, estimated fare, and travel time — in conversational Urdu</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li><strong>Urdu Voice Input:</strong> Tap the mic and speak — Web Speech API handles transcription natively</li>
+        <li><strong>Multi-City Support:</strong> Lahore, Karachi, and Islamabad with pre-seeded route data</li>
+        <li><strong>Community Driven:</strong> Logged-in users can add new routes to help fellow commuters (Firebase Google Sign-In)</li>
+        <li><strong>Smart Caching:</strong> LocalStorage caching of results for lightning-fast repeated queries</li>
+        <li><strong>Automatic Retry Logic:</strong> Multi-stage retries with backoff to handle platform spikes</li>
+        <li><strong>One-Tap Sharing:</strong> Share routes via WhatsApp/social on mobile, copy to clipboard on desktop</li>
+        <li><strong>RTL Urdu Interface:</strong> Fully right-to-left layout with Pakistan Green theme</li>
+        <li><strong>Persistent Preferences:</strong> Remembers your last selected city via LocalStorage</li>
+      </ul>
+
+      <h2>Route Database</h2>
+      <div className="not-prose overflow-x-auto">
+        <table className="w-full text-sm border border-border rounded-lg">
+          <thead>
+            <tr className="bg-muted">
+              <th className="px-4 py-2 text-left font-semibold">City</th>
+              <th className="px-4 py-2 text-left font-semibold">Pre-seeded Routes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Lahore</td>
+              <td className="px-4 py-2 font-mono text-xs">Bus 27, 5, 12, 8, 3</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Karachi</td>
+              <td className="px-4 py-2 font-mono text-xs">W11, 3A, 4K, K-11, N-3</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Islamabad</td>
+              <td className="px-4 py-2 font-mono text-xs">Terminal 1, Feeder 3, Metro Feeder</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Competition Context</h2>
+      <p>
+        Built for <strong>AI Seekho 2026</strong> — a national AI competition
+        organized by Google and the Government of Pakistan under the App Banao
+        (Build an App) track. The project was built entirely in one day using
+        Google AI Studio&apos;s Vibe Coding workflow, demonstrating how AI tools
+        can enable rapid development of high-utility civic applications.
+      </p>
+    </>
+  ),
+
   "robotics-textbook": (
     <>
       <h2>Overview</h2>
