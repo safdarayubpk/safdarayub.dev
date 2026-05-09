@@ -6,6 +6,7 @@ import { campaignManager } from "@/content/projects/campaign-manager";
 import { aiVideoGenerationAgent } from "@/content/projects/ai-video-generation-agent";
 import { flowCloudNativeTodo } from "@/content/projects/flow-cloud-native-todo";
 import { roboticsTextbook } from "@/content/projects/robotics-textbook";
+import { careercoachPakistan } from "@/content/projects/careercoach-pakistan";
 import { Project } from "@/types/project";
 
 const allProjects: Project[] = [
@@ -17,6 +18,7 @@ const allProjects: Project[] = [
   aiVideoGenerationAgent,
   flowCloudNativeTodo,
   roboticsTextbook,
+  careercoachPakistan,
 ];
 
 export function getProjects(): Project[] {
