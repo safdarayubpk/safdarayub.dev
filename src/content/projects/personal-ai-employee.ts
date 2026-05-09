@@ -21,6 +21,6 @@ export const personalAiEmployee: Project = {
     github: "https://github.com/safdarayubpk/PersonalAIEmployee",
   },
   isFlagship: true,
-  priority: 1,
+  priority: 2,
   lastUpdated: "2026-03-15",
 };
