@@ -1,6 +1,112 @@
 import { Badge } from "@/components/ui/badge";
 
 export const projectDetails: Record<string, React.ReactNode> = {
+  "careercoach-pakistan": (
+    <>
+      <h2>Overview</h2>
+      <p>
+        CareerCoach Pakistan is an AI-powered interview coaching SaaS built for
+        the Pakistani job market. Users paste a job description, configure their
+        role and experience level, and work through 10 AI-generated questions —
+        receiving scored feedback after each answer. The app supports both
+        English and Urdu input.
+      </p>
+      <p>
+        Each answer is evaluated by Groq AI across three dimensions:{" "}
+        <strong>What You Got Right</strong>,{" "}
+        <strong>What Was Missing</strong>, and{" "}
+        <strong>How to Improve</strong> — plus a model answer to compare
+        against. Scores are tracked per session on the dashboard.
+      </p>
+
+      <h2>User Flow</h2>
+      <ol>
+        <li>Land on marketing page → start 7-day free trial (no credit card)</li>
+        <li>Sign in with Google (Supabase Auth)</li>
+        <li>Subscribe via Stripe — PKR 999/month, cancel anytime via customer portal</li>
+        <li>
+          Set up a session: job role, experience level (Junior / Mid / Senior),
+          interview type (Technical / Behavioral / Mixed), optional JD paste
+        </li>
+        <li>Answer 10 AI-generated questions — each scored 1–10 with structured feedback</li>
+        <li>Review session history, scores, and averages on the dashboard</li>
+      </ol>
+
+      <h2>Architecture</h2>
+      <div className="not-prose overflow-x-auto">
+        <table className="w-full text-sm border border-border rounded-lg">
+          <thead>
+            <tr className="bg-muted">
+              <th className="px-4 py-2 text-left font-semibold">Layer</th>
+              <th className="px-4 py-2 text-left font-semibold">Technology</th>
+              <th className="px-4 py-2 text-left font-semibold">Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Auth</td>
+              <td className="px-4 py-2">Supabase Auth · Google OAuth</td>
+              <td className="px-4 py-2">User sessions, subscription gating</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Database</td>
+              <td className="px-4 py-2">Supabase Postgres · RLS</td>
+              <td className="px-4 py-2">Sessions, questions, answers, scores</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Billing</td>
+              <td className="px-4 py-2">Stripe subscriptions · customer portal</td>
+              <td className="px-4 py-2">PKR 999/month plans, trial management</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">AI</td>
+              <td className="px-4 py-2">Groq API · LLaMA 3</td>
+              <td className="px-4 py-2">Question generation · answer scoring</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Email</td>
+              <td className="px-4 py-2">Resend · React Email</td>
+              <td className="px-4 py-2">Welcome and billing transactional emails</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Analytics</td>
+              <td className="px-4 py-2">PostHog · Vercel Analytics</td>
+              <td className="px-4 py-2">Usage tracking, funnel analysis</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-2">Hosting</td>
+              <td className="px-4 py-2">Vercel (SSR)</td>
+              <td className="px-4 py-2">Edge deployment</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Key Engineering Decisions</h2>
+      <ul>
+        <li>
+          <strong>Groq over OpenAI:</strong> Lower latency and cost — important
+          at a PKR 999/month price point where margins matter
+        </li>
+        <li>
+          <strong>Supabase RLS:</strong> Row-Level Security policies ensure
+          users can only read their own sessions and answers — no custom
+          authorization middleware needed
+        </li>
+        <li>
+          <strong>Stripe customer portal:</strong> All billing self-service
+          (cancel, update card, view invoices) handled by Stripe — no custom
+          billing UI to build or maintain
+        </li>
+        <li>
+          <strong>JD trimming:</strong> Job descriptions are trimmed
+          server-side before being sent to Groq to stay within token limits —
+          surfaced to users as &ldquo;JD trimmed to fit AI limits&rdquo;
+        </li>
+      </ul>
+    </>
+  ),
+
   "ai-ml-job-market-pipeline": (
     <>
       <h2>Overview</h2>
